@@ -311,12 +311,16 @@ function PDollarRecognizer() // constructor
 		new Point(546,465,1),new Point(546,531,1),
 		new Point(540,530,2),new Point(536,529,2),new Point(533,528,2),new Point(529,529,2),new Point(524,530,2),new Point(520,532,2),new Point(515,535,2),new Point(511,539,2),new Point(508,545,2),new Point(506,548,2),new Point(506,554,2),new Point(509,558,2),new Point(512,561,2),new Point(517,564,2),new Point(521,564,2),new Point(527,563,2),new Point(531,560,2),new Point(535,557,2),new Point(538,553,2),new Point(542,548,2),new Point(544,544,2),new Point(546,540,2),new Point(546,536,2)
 	));
-	this.PointClouds[0] = new PointCloud("Ink Anvil", new Array(
+	this.PointClouds[16] = new PointCloud("Ink Anvil", new Array(
 		new Point(75,91,1),new Point(338,87,1),
 		new Point(78,203,2),new Point(341,205,2),
 		new Point(75,306,3),new Point(342,312,3),
 		new Point(78,203,4),new Point(75,306,4),
 		new Point(341,205,5),new Point(342,312,5)
+	));
+	this.PointClouds[17] = new PointCloud("+", new Array(
+		new Point(66,200,1),new Point(333,200,1),
+		new Point(200,66,2),new Point(200,333,2),
 	));
 	//
 	// The $P Point-Cloud Recognizer API begins here -- 3 methods: Recognize(), AddGesture(), DeleteUserGestures()
