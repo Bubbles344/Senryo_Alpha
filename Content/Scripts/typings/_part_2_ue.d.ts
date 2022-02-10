@@ -15415,117 +15415,6 @@ declare class VisualLoggerExtension extends UObject {
 	static C(Other: UObject | any): VisualLoggerExtension;
 }
 
-declare type EClothMassMode = 'UniformMass' | 'TotalMass' | 'Density' | 'MaxClothMassMode' | 'EClothMassMode_MAX';
-declare var EClothMassMode : { UniformMass:'UniformMass',TotalMass:'TotalMass',Density:'Density',MaxClothMassMode:'MaxClothMassMode',EClothMassMode_MAX:'EClothMassMode_MAX', };
-declare class ChaosClothWeightedValue { 
-	Low: number;
-	High: number;
-	clone() : ChaosClothWeightedValue;
-	static C(Other: UObject | any): ChaosClothWeightedValue;
-}
-
-declare type EChaosClothTetherMode = 'FastTetherFastLength' | 'AccurateTetherFastLength' | 'AccurateTetherAccurateLength' | 'MaxChaosClothTetherMode' | 'EChaosClothTetherMode_MAX';
-declare var EChaosClothTetherMode : { FastTetherFastLength:'FastTetherFastLength',AccurateTetherFastLength:'AccurateTetherFastLength',AccurateTetherAccurateLength:'AccurateTetherAccurateLength',MaxChaosClothTetherMode:'MaxChaosClothTetherMode',EChaosClothTetherMode_MAX:'EChaosClothTetherMode_MAX', };
-declare class ChaosClothConfig extends ClothConfigCommon { 
-	MassMode: EClothMassMode;
-	UniformMass: number;
-	TotalMass: number;
-	Density: number;
-	MinPerParticleMass: number;
-	EdgeStiffness: number;
-	BendingStiffness: number;
-	bUseBendingElements: boolean;
-	AreaStiffness: number;
-	VolumeStiffness: number;
-	TetherStiffness: ChaosClothWeightedValue;
-	LimitScale: number;
-	bUseGeodesicDistance: boolean;
-	ShapeTargetStiffness: number;
-	CollisionThickness: number;
-	FrictionCoefficient: number;
-	bUseCCD: boolean;
-	bUseSelfCollisions: boolean;
-	SelfCollisionThickness: number;
-	bUseLegacyBackstop: boolean;
-	DampingCoefficient: number;
-	bUsePointBasedWindModel: boolean;
-	DragCoefficient: number;
-	LiftCoefficient: number;
-	bUseGravityOverride: boolean;
-	GravityScale: number;
-	Gravity: Vector;
-	AnimDriveStiffness: ChaosClothWeightedValue;
-	AnimDriveDamping: ChaosClothWeightedValue;
-	LinearVelocityScale: Vector;
-	AngularVelocityScale: number;
-	FictitiousAngularScale: number;
-	bUseTetrahedralConstraints: boolean;
-	bUseThinShellVolumeConstraints: boolean;
-	bUseContinuousCollisionDetection: boolean;
-	TetherMode: EChaosClothTetherMode;
-	AnimDriveSpringStiffness: number;
-	StrainLimitingStiffness: number;
-	static Load(ResourceName: string): ChaosClothConfig;
-	static Find(Outer: UObject, ResourceName: string): ChaosClothConfig;
-	static GetDefaultObject(): ChaosClothConfig;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ChaosClothConfig;
-	static C(Other: UObject | any): ChaosClothConfig;
-}
-
-declare class ChaosClothSharedSimConfig extends ClothSharedConfigCommon { 
-	IterationCount: number;
-	SubdivisionCount: number;
-	SelfCollisionThickness: number;
-	CollisionThickness: number;
-	bUseDampingOverride: boolean;
-	Damping: number;
-	bUseGravityOverride: boolean;
-	GravityScale: number;
-	Gravity: Vector;
-	bUseLocalSpaceSimulation: boolean;
-	bUseXPBDConstraints: boolean;
-	static Load(ResourceName: string): ChaosClothSharedSimConfig;
-	static Find(Outer: UObject, ResourceName: string): ChaosClothSharedSimConfig;
-	static GetDefaultObject(): ChaosClothSharedSimConfig;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ChaosClothSharedSimConfig;
-	static C(Other: UObject | any): ChaosClothSharedSimConfig;
-}
-
-declare class ChaosClothingSimulationFactory extends ClothingSimulationFactory { 
-	static Load(ResourceName: string): ChaosClothingSimulationFactory;
-	static Find(Outer: UObject, ResourceName: string): ChaosClothingSimulationFactory;
-	static GetDefaultObject(): ChaosClothingSimulationFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ChaosClothingSimulationFactory;
-	static C(Other: UObject | any): ChaosClothingSimulationFactory;
-}
-
-declare class ChaosClothingInteractor extends ClothingInteractor { 
-	static Load(ResourceName: string): ChaosClothingInteractor;
-	static Find(Outer: UObject, ResourceName: string): ChaosClothingInteractor;
-	static GetDefaultObject(): ChaosClothingInteractor;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ChaosClothingInteractor;
-	SetVelocityScale(LinearVelocityScale: Vector,AngularVelocityScale: number,FictitiousAngularScale: number): void;
-	SetMaterialLinear(EdgeStiffness: number,BendingStiffness: number,AreaStiffness: number): void;
-	SetLongRangeAttachmentLinear(TetherStiffness: number): void;
-	SetLongRangeAttachment(TetherStiffness: Vector2D): void;
-	SetGravity(GravityScale: number,bIsGravityOverridden: boolean,GravityOverride: Vector): void;
-	SetDamping(DampingCoefficient: number): void;
-	SetCollision(CollisionThickness: number,FrictionCoefficient: number,bUseCCD: boolean,SelfCollisionThickness: number): void;
-	SetAnimDriveLinear(AnimDriveStiffness: number): void;
-	SetAnimDrive(AnimDriveStiffness: Vector2D,AnimDriveDamping: Vector2D): void;
-	SetAerodynamics(DragCoefficient: number,LiftCoefficient: number,WindVelocity: Vector): void;
-	ResetAndTeleport(bReset: boolean,bTeleport: boolean): void;
-	static C(Other: UObject | any): ChaosClothingInteractor;
-}
-
-declare class ChaosClothingSimulationInteractor extends ClothingSimulationInteractor { 
-	static Load(ResourceName: string): ChaosClothingSimulationInteractor;
-	static Find(Outer: UObject, ResourceName: string): ChaosClothingSimulationInteractor;
-	static GetDefaultObject(): ChaosClothingSimulationInteractor;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ChaosClothingSimulationInteractor;
-	static C(Other: UObject | any): ChaosClothingSimulationInteractor;
-}
-
 declare class VariantDependency { 
 	VariantSet: VariantSet;
 	Variant: Variant;
@@ -16368,6 +16257,117 @@ declare class DatasmithStaticMeshTemplate extends DatasmithObjectTemplate {
 	static GetDefaultObject(): DatasmithStaticMeshTemplate;
 	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): DatasmithStaticMeshTemplate;
 	static C(Other: UObject | any): DatasmithStaticMeshTemplate;
+}
+
+declare type EClothMassMode = 'UniformMass' | 'TotalMass' | 'Density' | 'MaxClothMassMode' | 'EClothMassMode_MAX';
+declare var EClothMassMode : { UniformMass:'UniformMass',TotalMass:'TotalMass',Density:'Density',MaxClothMassMode:'MaxClothMassMode',EClothMassMode_MAX:'EClothMassMode_MAX', };
+declare class ChaosClothWeightedValue { 
+	Low: number;
+	High: number;
+	clone() : ChaosClothWeightedValue;
+	static C(Other: UObject | any): ChaosClothWeightedValue;
+}
+
+declare type EChaosClothTetherMode = 'FastTetherFastLength' | 'AccurateTetherFastLength' | 'AccurateTetherAccurateLength' | 'MaxChaosClothTetherMode' | 'EChaosClothTetherMode_MAX';
+declare var EChaosClothTetherMode : { FastTetherFastLength:'FastTetherFastLength',AccurateTetherFastLength:'AccurateTetherFastLength',AccurateTetherAccurateLength:'AccurateTetherAccurateLength',MaxChaosClothTetherMode:'MaxChaosClothTetherMode',EChaosClothTetherMode_MAX:'EChaosClothTetherMode_MAX', };
+declare class ChaosClothConfig extends ClothConfigCommon { 
+	MassMode: EClothMassMode;
+	UniformMass: number;
+	TotalMass: number;
+	Density: number;
+	MinPerParticleMass: number;
+	EdgeStiffness: number;
+	BendingStiffness: number;
+	bUseBendingElements: boolean;
+	AreaStiffness: number;
+	VolumeStiffness: number;
+	TetherStiffness: ChaosClothWeightedValue;
+	LimitScale: number;
+	bUseGeodesicDistance: boolean;
+	ShapeTargetStiffness: number;
+	CollisionThickness: number;
+	FrictionCoefficient: number;
+	bUseCCD: boolean;
+	bUseSelfCollisions: boolean;
+	SelfCollisionThickness: number;
+	bUseLegacyBackstop: boolean;
+	DampingCoefficient: number;
+	bUsePointBasedWindModel: boolean;
+	DragCoefficient: number;
+	LiftCoefficient: number;
+	bUseGravityOverride: boolean;
+	GravityScale: number;
+	Gravity: Vector;
+	AnimDriveStiffness: ChaosClothWeightedValue;
+	AnimDriveDamping: ChaosClothWeightedValue;
+	LinearVelocityScale: Vector;
+	AngularVelocityScale: number;
+	FictitiousAngularScale: number;
+	bUseTetrahedralConstraints: boolean;
+	bUseThinShellVolumeConstraints: boolean;
+	bUseContinuousCollisionDetection: boolean;
+	TetherMode: EChaosClothTetherMode;
+	AnimDriveSpringStiffness: number;
+	StrainLimitingStiffness: number;
+	static Load(ResourceName: string): ChaosClothConfig;
+	static Find(Outer: UObject, ResourceName: string): ChaosClothConfig;
+	static GetDefaultObject(): ChaosClothConfig;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ChaosClothConfig;
+	static C(Other: UObject | any): ChaosClothConfig;
+}
+
+declare class ChaosClothSharedSimConfig extends ClothSharedConfigCommon { 
+	IterationCount: number;
+	SubdivisionCount: number;
+	SelfCollisionThickness: number;
+	CollisionThickness: number;
+	bUseDampingOverride: boolean;
+	Damping: number;
+	bUseGravityOverride: boolean;
+	GravityScale: number;
+	Gravity: Vector;
+	bUseLocalSpaceSimulation: boolean;
+	bUseXPBDConstraints: boolean;
+	static Load(ResourceName: string): ChaosClothSharedSimConfig;
+	static Find(Outer: UObject, ResourceName: string): ChaosClothSharedSimConfig;
+	static GetDefaultObject(): ChaosClothSharedSimConfig;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ChaosClothSharedSimConfig;
+	static C(Other: UObject | any): ChaosClothSharedSimConfig;
+}
+
+declare class ChaosClothingSimulationFactory extends ClothingSimulationFactory { 
+	static Load(ResourceName: string): ChaosClothingSimulationFactory;
+	static Find(Outer: UObject, ResourceName: string): ChaosClothingSimulationFactory;
+	static GetDefaultObject(): ChaosClothingSimulationFactory;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ChaosClothingSimulationFactory;
+	static C(Other: UObject | any): ChaosClothingSimulationFactory;
+}
+
+declare class ChaosClothingInteractor extends ClothingInteractor { 
+	static Load(ResourceName: string): ChaosClothingInteractor;
+	static Find(Outer: UObject, ResourceName: string): ChaosClothingInteractor;
+	static GetDefaultObject(): ChaosClothingInteractor;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ChaosClothingInteractor;
+	SetVelocityScale(LinearVelocityScale: Vector,AngularVelocityScale: number,FictitiousAngularScale: number): void;
+	SetMaterialLinear(EdgeStiffness: number,BendingStiffness: number,AreaStiffness: number): void;
+	SetLongRangeAttachmentLinear(TetherStiffness: number): void;
+	SetLongRangeAttachment(TetherStiffness: Vector2D): void;
+	SetGravity(GravityScale: number,bIsGravityOverridden: boolean,GravityOverride: Vector): void;
+	SetDamping(DampingCoefficient: number): void;
+	SetCollision(CollisionThickness: number,FrictionCoefficient: number,bUseCCD: boolean,SelfCollisionThickness: number): void;
+	SetAnimDriveLinear(AnimDriveStiffness: number): void;
+	SetAnimDrive(AnimDriveStiffness: Vector2D,AnimDriveDamping: Vector2D): void;
+	SetAerodynamics(DragCoefficient: number,LiftCoefficient: number,WindVelocity: Vector): void;
+	ResetAndTeleport(bReset: boolean,bTeleport: boolean): void;
+	static C(Other: UObject | any): ChaosClothingInteractor;
+}
+
+declare class ChaosClothingSimulationInteractor extends ClothingSimulationInteractor { 
+	static Load(ResourceName: string): ChaosClothingSimulationInteractor;
+	static Find(Outer: UObject, ResourceName: string): ChaosClothingSimulationInteractor;
+	static GetDefaultObject(): ChaosClothingSimulationInteractor;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ChaosClothingSimulationInteractor;
+	static C(Other: UObject | any): ChaosClothingSimulationInteractor;
 }
 
 declare type EMagicLeapPrivilege = 'Invalid' | 'BatteryInfo' | 'CameraCapture' | 'ComputerVision' | 'WorldReconstruction' | 'InAppPurchase' | 'AudioCaptureMic' | 'DrmCertificates' | 'Occlusion' | 'LowLatencyLightwear' | 'Internet' | 'IdentityRead' | 'BackgroundDownload' | 'BackgroundUpload' | 'MediaDrm' | 'Media' | 'MediaMetadata' | 'PowerInfo' | 'LocalAreaNetwork' | 'VoiceInput' | 'Documents' | 'ConnectBackgroundMusicService' | 'RegisterBackgroundMusicService' | 'PcfRead' | 'PwFoundObjRead' | 'NormalNotificationsUsage' | 'MusicService' | 'ControllerPose' | 'GesturesSubscribe' | 'GesturesConfig' | 'AddressBookRead' | 'AddressBookWrite' | 'AddressBookBasicAccess' | 'CoarseLocation' | 'FineLocation' | 'HandMesh' | 'WifiStatusRead' | 'SocialConnectionsInvitesAccess' | 'SecureBrowserWindow' | 'EMagicLeapPrivilege_MAX';

@@ -2,6 +2,16 @@
 /// <reference path="_part_1_ue.d.ts">/>
 /// <reference path="_part_2_ue.d.ts">/>
 /// <reference path="_part_3_ue.d.ts">/>
+declare class JavascriptGraphAppearanceInfo { 
+	CornerImage: SlateBrush;
+	CornerText: string;
+	PIENotifyText: string;
+	ReadOnlyText: string;
+	InstructionText: string;
+	clone() : JavascriptGraphAppearanceInfo;
+	static C(Other: UObject | any): JavascriptGraphAppearanceInfo;
+}
+
 declare type EPinVisibility = 'Pin_Show' | 'Pin_HideNoConnection' | 'Pin_HideNoConnectionNoDefault' | 'Pin_MAX';
 declare var EPinVisibility : { Pin_Show:'Pin_Show',Pin_HideNoConnection:'Pin_HideNoConnection',Pin_HideNoConnectionNoDefault:'Pin_HideNoConnectionNoDefault',Pin_MAX:'Pin_MAX', };
 declare class JavascriptGraphEditorWidget extends Widget { 
@@ -1058,38 +1068,6 @@ declare class StructViewerProjectSettings extends UObject {
 	static GetDefaultObject(): StructViewerProjectSettings;
 	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): StructViewerProjectSettings;
 	static C(Other: UObject | any): StructViewerProjectSettings;
-}
-
-declare class ForEachActorIteratorSignature__PythonCallable extends PythonCallableForDelegate { 
-	static Load(ResourceName: string): ForEachActorIteratorSignature__PythonCallable;
-	static Find(Outer: UObject, ResourceName: string): ForEachActorIteratorSignature__PythonCallable;
-	static GetDefaultObject(): ForEachActorIteratorSignature__PythonCallable;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ForEachActorIteratorSignature__PythonCallable;
-	static C(Other: UObject | any): ForEachActorIteratorSignature__PythonCallable;
-}
-
-declare class ForEachAssetIteratorSignature__PythonCallable extends PythonCallableForDelegate { 
-	static Load(ResourceName: string): ForEachAssetIteratorSignature__PythonCallable;
-	static Find(Outer: UObject, ResourceName: string): ForEachAssetIteratorSignature__PythonCallable;
-	static GetDefaultObject(): ForEachAssetIteratorSignature__PythonCallable;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ForEachAssetIteratorSignature__PythonCallable;
-	static C(Other: UObject | any): ForEachAssetIteratorSignature__PythonCallable;
-}
-
-declare class AsyncDelayComplete__PythonCallable extends PythonCallableForDelegate { 
-	static Load(ResourceName: string): AsyncDelayComplete__PythonCallable;
-	static Find(Outer: UObject, ResourceName: string): AsyncDelayComplete__PythonCallable;
-	static GetDefaultObject(): AsyncDelayComplete__PythonCallable;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AsyncDelayComplete__PythonCallable;
-	static C(Other: UObject | any): AsyncDelayComplete__PythonCallable;
-}
-
-declare class AsyncEditorWaitForGameWorldEvent__PythonCallable extends PythonCallableForDelegate { 
-	static Load(ResourceName: string): AsyncEditorWaitForGameWorldEvent__PythonCallable;
-	static Find(Outer: UObject, ResourceName: string): AsyncEditorWaitForGameWorldEvent__PythonCallable;
-	static GetDefaultObject(): AsyncEditorWaitForGameWorldEvent__PythonCallable;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AsyncEditorWaitForGameWorldEvent__PythonCallable;
-	static C(Other: UObject | any): AsyncEditorWaitForGameWorldEvent__PythonCallable;
 }
 
 declare class UndoHistorySettings extends UObject { 
