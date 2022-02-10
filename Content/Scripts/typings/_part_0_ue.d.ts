@@ -16271,7 +16271,7 @@ declare class VersionedNiagaraScriptData {
 	Description: string;
 	Keywords: string;
 	CollapsedViewFormat: string;
-	HighLights: NiagaraScriptHighlight[];
+	Highlights: NiagaraScriptHighlight[];
 	ScriptMetaData: any;
 	LastGeneratedVMId: NiagaraVMExecutableDataId;
 	UpdateScriptExecution: ENiagaraPythonUpdateScriptReference;
@@ -16536,7 +16536,7 @@ declare class NiagaraScript extends NiagaraScriptBase {
 	Description: string;
 	Keywords: string;
 	CollapsedViewFormat: string;
-	HighLights: NiagaraScriptHighlight[];
+	Highlights: NiagaraScriptHighlight[];
 	ScriptMetaData: any;
 	Source: NiagaraScriptSourceBase;
 	ScriptExecutionParamStoreCPU: NiagaraScriptExecutionParameterStore;
