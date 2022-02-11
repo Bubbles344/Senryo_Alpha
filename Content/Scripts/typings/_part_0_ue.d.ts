@@ -10002,8 +10002,8 @@ declare class PlayerController extends Controller {
 	AddPitchInput(Val: number): void;
 	ActivateTouchInterface(NewTouchInterface: TouchInterface): void;
 	static C(Other: UObject | any): PlayerController;
-	SetEyeTrackedPlayer(): void;
 	WriteLeaderboardInteger(StatName: string,StatValue: number): boolean;
+	SetEyeTrackedPlayer(): void;
 	GetLocalPlayerSubSystemFromPlayerController(Class: UnrealEngineClass): LocalPlayerSubsystem;
 	IsLoggedIn(): boolean;
 	ShowPlatformSpecificAchievementsScreen(): void;
@@ -10020,8 +10020,8 @@ declare class PlayerController extends Controller {
 	SetInputMode_GameOnly(): void;
 	SetInputMode_UIOnly(InWidgetToFocus: Widget,bLockMouseToViewport: boolean): void;
 	SetInputMode_UIOnlyEx(InWidgetToFocus: Widget,InMouseLockMode: EMouseLockMode): void;
-	static SetEyeTrackedPlayer(PlayerController: PlayerController): void;
 	static WriteLeaderboardInteger(PlayerController: PlayerController,StatName: string,StatValue: number): boolean;
+	static SetEyeTrackedPlayer(PlayerController: PlayerController): void;
 	static GetLocalPlayerSubSystemFromPlayerController(PlayerController: PlayerController,Class: UnrealEngineClass): LocalPlayerSubsystem;
 	static IsLoggedIn(SpecificPlayer: PlayerController): boolean;
 	static ShowPlatformSpecificAchievementsScreen(SpecificPlayer: PlayerController): void;
@@ -15528,507 +15528,6 @@ declare class RecastNavMesh extends NavigationData {
 	static C(Other: UObject | any): RecastNavMesh;
 }
 
-declare type EARWorldAlignment = 'Gravity' | 'GravityAndHeading' | 'Camera' | 'EARWorldAlignment_MAX';
-declare var EARWorldAlignment : { Gravity:'Gravity',GravityAndHeading:'GravityAndHeading',Camera:'Camera',EARWorldAlignment_MAX:'EARWorldAlignment_MAX', };
-declare type EARSessionType = 'None' | 'Orientation' | 'World' | 'Face' | 'Image' | 'ObjectScanning' | 'PoseTracking' | 'GeoTracking' | 'EARSessionType_MAX';
-declare var EARSessionType : { None:'None',Orientation:'Orientation',World:'World',Face:'Face',Image:'Image',ObjectScanning:'ObjectScanning',PoseTracking:'PoseTracking',GeoTracking:'GeoTracking',EARSessionType_MAX:'EARSessionType_MAX', };
-declare type EARPlaneDetectionMode = 'None' | 'HorizontalPlaneDetection' | 'VerticalPlaneDetection' | 'EARPlaneDetectionMode_MAX';
-declare var EARPlaneDetectionMode : { None:'None',HorizontalPlaneDetection:'HorizontalPlaneDetection',VerticalPlaneDetection:'VerticalPlaneDetection',EARPlaneDetectionMode_MAX:'EARPlaneDetectionMode_MAX', };
-declare type EARLightEstimationMode = 'None' | 'AmbientLightEstimate' | 'DirectionalLightEstimate' | 'EARLightEstimationMode_MAX';
-declare var EARLightEstimationMode : { None:'None',AmbientLightEstimate:'AmbientLightEstimate',DirectionalLightEstimate:'DirectionalLightEstimate',EARLightEstimationMode_MAX:'EARLightEstimationMode_MAX', };
-declare type EARFrameSyncMode = 'SyncTickWithCameraImage' | 'SyncTickWithoutCameraImage' | 'EARFrameSyncMode_MAX';
-declare var EARFrameSyncMode : { SyncTickWithCameraImage:'SyncTickWithCameraImage',SyncTickWithoutCameraImage:'SyncTickWithoutCameraImage',EARFrameSyncMode_MAX:'EARFrameSyncMode_MAX', };
-declare type EARCandidateImageOrientation = 'Landscape' | 'Portrait' | 'EARCandidateImageOrientation_MAX';
-declare var EARCandidateImageOrientation : { Landscape:'Landscape',Portrait:'Portrait',EARCandidateImageOrientation_MAX:'EARCandidateImageOrientation_MAX', };
-declare class ARCandidateImage extends DataAsset { 
-	CandidateTexture: Texture2D;
-	FriendlyName: string;
-	Width: number;
-	Height: number;
-	Orientation: EARCandidateImageOrientation;
-	static Load(ResourceName: string): ARCandidateImage;
-	static Find(Outer: UObject, ResourceName: string): ARCandidateImage;
-	static GetDefaultObject(): ARCandidateImage;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARCandidateImage;
-	GetPhysicalWidth(): number;
-	GetPhysicalHeight(): number;
-	GetOrientation(): EARCandidateImageOrientation;
-	GetFriendlyName(): string;
-	GetCandidateTexture(): Texture2D;
-	static C(Other: UObject | any): ARCandidateImage;
-}
-
-declare type EAREnvironmentCaptureProbeType = 'None' | 'Manual' | 'Automatic' | 'EAREnvironmentCaptureProbeType_MAX';
-declare var EAREnvironmentCaptureProbeType : { None:'None',Manual:'Manual',Automatic:'Automatic',EAREnvironmentCaptureProbeType_MAX:'EAREnvironmentCaptureProbeType_MAX', };
-declare class ARCandidateObject extends DataAsset { 
-	CandidateObjectData: number[];
-	FriendlyName: string;
-	BoundingBox: Box;
-	static Load(ResourceName: string): ARCandidateObject;
-	static Find(Outer: UObject, ResourceName: string): ARCandidateObject;
-	static GetDefaultObject(): ARCandidateObject;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARCandidateObject;
-	SetFriendlyName(NewName: string): void;
-	SetCandidateObjectData(InCandidateObject: number[]): void;
-	SetBoundingBox(InBoundingBox: Box): void;
-	GetFriendlyName(): string;
-	GetCandidateObjectData(): number[];
-	GetBoundingBox(): Box;
-	static C(Other: UObject | any): ARCandidateObject;
-}
-
-declare class ARVideoFormat { 
-	FPS: number;
-	Width: number;
-	Height: number;
-	clone() : ARVideoFormat;
-	static C(Other: UObject | any): ARVideoFormat;
-}
-
-declare type EARFaceTrackingDirection = 'FaceRelative' | 'FaceMirrored' | 'EARFaceTrackingDirection_MAX';
-declare var EARFaceTrackingDirection : { FaceRelative:'FaceRelative',FaceMirrored:'FaceMirrored',EARFaceTrackingDirection_MAX:'EARFaceTrackingDirection_MAX', };
-declare type EARFaceTrackingUpdate = 'CurvesAndGeo' | 'CurvesOnly' | 'EARFaceTrackingUpdate_MAX';
-declare var EARFaceTrackingUpdate : { CurvesAndGeo:'CurvesAndGeo',CurvesOnly:'CurvesOnly',EARFaceTrackingUpdate_MAX:'EARFaceTrackingUpdate_MAX', };
-declare type EARSessionTrackingFeature = 'None' | 'PoseDetection2D' | 'PersonSegmentation' | 'PersonSegmentationWithDepth' | 'SceneDepth' | 'SmoothedSceneDepth' | 'EARSessionTrackingFeature_MAX';
-declare var EARSessionTrackingFeature : { None:'None',PoseDetection2D:'PoseDetection2D',PersonSegmentation:'PersonSegmentation',PersonSegmentationWithDepth:'PersonSegmentationWithDepth',SceneDepth:'SceneDepth',SmoothedSceneDepth:'SmoothedSceneDepth',EARSessionTrackingFeature_MAX:'EARSessionTrackingFeature_MAX', };
-declare type EARSceneReconstruction = 'None' | 'MeshOnly' | 'MeshWithClassification' | 'EARSceneReconstruction_MAX';
-declare var EARSceneReconstruction : { None:'None',MeshOnly:'MeshOnly',MeshWithClassification:'MeshWithClassification',EARSceneReconstruction_MAX:'EARSceneReconstruction_MAX', };
-declare class ARComponent extends SceneComponent { 
-	NativeID: Guid;
-	bUseDefaultReplication: boolean;
-	DefaultMeshMaterial: MaterialInterface;
-	DefaultWireframeMeshMaterial: MaterialInterface;
-	MRMeshComponent: MRMeshComponent;
-	MyTrackedGeometry: ARTrackedGeometry;
-	static Load(ResourceName: string): ARComponent;
-	static Find(Outer: UObject, ResourceName: string): ARComponent;
-	static GetDefaultObject(): ARComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARComponent;
-	UpdateVisualization(): void;
-	SetNativeID(NativeID: Guid): void;
-	ReceiveRemove(): void;
-	OnRep_Payload(): void;
-	GetMRMesh(): MRMeshComponent;
-	static C(Other: UObject | any): ARComponent;
-}
-
-declare class ARSessionPayload { 
-	ConfigFlags: number;
-	DefaultMeshMaterial: MaterialInterface;
-	DefaultWireframeMeshMaterial: MaterialInterface;
-	clone() : ARSessionPayload;
-	static C(Other: UObject | any): ARSessionPayload;
-}
-
-declare class ARPlaneUpdatePayload { 
-	SessionPayload: ARSessionPayload;
-	WorldTransform: Transform;
-	Center: Vector;
-	Extents: Vector;
-	BoundaryVertices: Vector[];
-	ObjectClassification: EARObjectClassification;
-	clone() : ARPlaneUpdatePayload;
-	static C(Other: UObject | any): ARPlaneUpdatePayload;
-}
-
-declare type EPlaneComponentDebugMode = 'None' | 'ShowNetworkRole' | 'ShowClassification' | 'EPlaneComponentDebugMode_MAX';
-declare var EPlaneComponentDebugMode : { None:'None',ShowNetworkRole:'ShowNetworkRole',ShowClassification:'ShowClassification',EPlaneComponentDebugMode_MAX:'EPlaneComponentDebugMode_MAX', };
-declare class ARPlaneComponent extends ARComponent { 
-	ReplicatedPayload: ARPlaneUpdatePayload;
-	static Load(ResourceName: string): ARPlaneComponent;
-	static Find(Outer: UObject, ResourceName: string): ARPlaneComponent;
-	static GetDefaultObject(): ARPlaneComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARPlaneComponent;
-	static SetPlaneComponentDebugMode(NewDebugMode: EPlaneComponentDebugMode): void;
-	static SetObjectClassificationDebugColors(InColors: any): void;
-	ServerUpdatePayload(NewPayload: ARPlaneUpdatePayload): void;
-	ReceiveUpdate(Payload: ARPlaneUpdatePayload): void;
-	ReceiveAdd(Payload: ARPlaneUpdatePayload): void;
-	static GetObjectClassificationDebugColors(): any;
-	static C(Other: UObject | any): ARPlaneComponent;
-}
-
-declare class ARPointUpdatePayload { 
-	clone() : ARPointUpdatePayload;
-	static C(Other: UObject | any): ARPointUpdatePayload;
-}
-
-declare class ARPointComponent extends ARComponent { 
-	ReplicatedPayload: ARPointUpdatePayload;
-	static Load(ResourceName: string): ARPointComponent;
-	static Find(Outer: UObject, ResourceName: string): ARPointComponent;
-	static GetDefaultObject(): ARPointComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARPointComponent;
-	ServerUpdatePayload(NewPayload: ARPointUpdatePayload): void;
-	ReceiveUpdate(Payload: ARPointUpdatePayload): void;
-	ReceiveAdd(Payload: ARPointUpdatePayload): void;
-	static C(Other: UObject | any): ARPointComponent;
-}
-
-declare type EARFaceTransformMixing = 'ComponentOnly' | 'ComponentLocationTrackedRotation' | 'ComponentWithTracked' | 'TrackingOnly' | 'EARFaceTransformMixing_MAX';
-declare var EARFaceTransformMixing : { ComponentOnly:'ComponentOnly',ComponentLocationTrackedRotation:'ComponentLocationTrackedRotation',ComponentWithTracked:'ComponentWithTracked',TrackingOnly:'TrackingOnly',EARFaceTransformMixing_MAX:'EARFaceTransformMixing_MAX', };
-declare class ARFaceUpdatePayload { 
-	SessionPayload: ARSessionPayload;
-	LeftEyePosition: Vector;
-	RightEyePosition: Vector;
-	LookAtTarget: Vector;
-	clone() : ARFaceUpdatePayload;
-	static C(Other: UObject | any): ARFaceUpdatePayload;
-}
-
-declare type EFaceComponentDebugMode = 'None' | 'ShowEyeVectors' | 'ShowFaceMesh' | 'EFaceComponentDebugMode_MAX';
-declare var EFaceComponentDebugMode : { None:'None',ShowEyeVectors:'ShowEyeVectors',ShowFaceMesh:'ShowFaceMesh',EFaceComponentDebugMode_MAX:'EFaceComponentDebugMode_MAX', };
-declare class ARFaceComponent extends ARComponent { 
-	TransformSetting: EARFaceTransformMixing;
-	bUpdateVertexNormal: boolean;
-	bFaceOutOfScreen: boolean;
-	ReplicatedPayload: ARFaceUpdatePayload;
-	static Load(ResourceName: string): ARFaceComponent;
-	static Find(Outer: UObject, ResourceName: string): ARFaceComponent;
-	static GetDefaultObject(): ARFaceComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARFaceComponent;
-	static SetFaceComponentDebugMode(NewDebugMode: EFaceComponentDebugMode): void;
-	ServerUpdatePayload(NewPayload: ARFaceUpdatePayload): void;
-	ReceiveUpdate(Payload: ARFaceUpdatePayload): void;
-	ReceiveAdd(Payload: ARFaceUpdatePayload): void;
-	static C(Other: UObject | any): ARFaceComponent;
-}
-
-declare class ARImageUpdatePayload { 
-	SessionPayload: ARSessionPayload;
-	WorldTransform: Transform;
-	DetectedImage: ARCandidateImage;
-	EstimatedSize: Vector2D;
-	clone() : ARImageUpdatePayload;
-	static C(Other: UObject | any): ARImageUpdatePayload;
-}
-
-declare type EImageComponentDebugMode = 'None' | 'ShowDetectedImage' | 'EImageComponentDebugMode_MAX';
-declare var EImageComponentDebugMode : { None:'None',ShowDetectedImage:'ShowDetectedImage',EImageComponentDebugMode_MAX:'EImageComponentDebugMode_MAX', };
-declare class ARImageComponent extends ARComponent { 
-	ReplicatedPayload: ARImageUpdatePayload;
-	static Load(ResourceName: string): ARImageComponent;
-	static Find(Outer: UObject, ResourceName: string): ARImageComponent;
-	static GetDefaultObject(): ARImageComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARImageComponent;
-	static SetImageComponentDebugMode(NewDebugMode: EImageComponentDebugMode): void;
-	ServerUpdatePayload(NewPayload: ARImageUpdatePayload): void;
-	ReceiveUpdate(Payload: ARImageUpdatePayload): void;
-	ReceiveAdd(Payload: ARImageUpdatePayload): void;
-	static C(Other: UObject | any): ARImageComponent;
-}
-
-declare class ARQRCodeUpdatePayload { 
-	SessionPayload: ARSessionPayload;
-	WorldTransform: Transform;
-	Extents: Vector;
-	QRCode: string;
-	clone() : ARQRCodeUpdatePayload;
-	static C(Other: UObject | any): ARQRCodeUpdatePayload;
-}
-
-declare type EQRCodeComponentDebugMode = 'None' | 'ShowQRCode' | 'EQRCodeComponentDebugMode_MAX';
-declare var EQRCodeComponentDebugMode : { None:'None',ShowQRCode:'ShowQRCode',EQRCodeComponentDebugMode_MAX:'EQRCodeComponentDebugMode_MAX', };
-declare class ARQRCodeComponent extends ARComponent { 
-	ReplicatedPayload: ARQRCodeUpdatePayload;
-	static Load(ResourceName: string): ARQRCodeComponent;
-	static Find(Outer: UObject, ResourceName: string): ARQRCodeComponent;
-	static GetDefaultObject(): ARQRCodeComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARQRCodeComponent;
-	static SetQRCodeComponentDebugMode(NewDebugMode: EQRCodeComponentDebugMode): void;
-	ServerUpdatePayload(NewPayload: ARQRCodeUpdatePayload): void;
-	ReceiveUpdate(Payload: ARQRCodeUpdatePayload): void;
-	ReceiveAdd(Payload: ARQRCodeUpdatePayload): void;
-	static C(Other: UObject | any): ARQRCodeComponent;
-}
-
-declare class ARPoseUpdatePayload { 
-	WorldTransform: Transform;
-	JointTransforms: Transform[];
-	clone() : ARPoseUpdatePayload;
-	static C(Other: UObject | any): ARPoseUpdatePayload;
-}
-
-declare type EPoseComponentDebugMode = 'None' | 'ShowSkeleton' | 'EPoseComponentDebugMode_MAX';
-declare var EPoseComponentDebugMode : { None:'None',ShowSkeleton:'ShowSkeleton',EPoseComponentDebugMode_MAX:'EPoseComponentDebugMode_MAX', };
-declare class ARPoseComponent extends ARComponent { 
-	ReplicatedPayload: ARPoseUpdatePayload;
-	static Load(ResourceName: string): ARPoseComponent;
-	static Find(Outer: UObject, ResourceName: string): ARPoseComponent;
-	static GetDefaultObject(): ARPoseComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARPoseComponent;
-	static SetPoseComponentDebugMode(NewDebugMode: EPoseComponentDebugMode): void;
-	ServerUpdatePayload(NewPayload: ARPoseUpdatePayload): void;
-	ReceiveUpdate(Payload: ARPoseUpdatePayload): void;
-	ReceiveAdd(Payload: ARPoseUpdatePayload): void;
-	static C(Other: UObject | any): ARPoseComponent;
-}
-
-declare class AREnvironmentProbeUpdatePayload { 
-	WorldTransform: Transform;
-	clone() : AREnvironmentProbeUpdatePayload;
-	static C(Other: UObject | any): AREnvironmentProbeUpdatePayload;
-}
-
-declare class AREnvironmentProbeComponent extends ARComponent { 
-	ReplicatedPayload: AREnvironmentProbeUpdatePayload;
-	static Load(ResourceName: string): AREnvironmentProbeComponent;
-	static Find(Outer: UObject, ResourceName: string): AREnvironmentProbeComponent;
-	static GetDefaultObject(): AREnvironmentProbeComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AREnvironmentProbeComponent;
-	ServerUpdatePayload(NewPayload: AREnvironmentProbeUpdatePayload): void;
-	ReceiveUpdate(Payload: AREnvironmentProbeUpdatePayload): void;
-	ReceiveAdd(Payload: AREnvironmentProbeUpdatePayload): void;
-	static C(Other: UObject | any): AREnvironmentProbeComponent;
-}
-
-declare class ARObjectUpdatePayload { 
-	WorldTransform: Transform;
-	clone() : ARObjectUpdatePayload;
-	static C(Other: UObject | any): ARObjectUpdatePayload;
-}
-
-declare class ARObjectComponent extends ARComponent { 
-	ReplicatedPayload: ARObjectUpdatePayload;
-	static Load(ResourceName: string): ARObjectComponent;
-	static Find(Outer: UObject, ResourceName: string): ARObjectComponent;
-	static GetDefaultObject(): ARObjectComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARObjectComponent;
-	ServerUpdatePayload(NewPayload: ARObjectUpdatePayload): void;
-	ReceiveUpdate(Payload: ARObjectUpdatePayload): void;
-	ReceiveAdd(Payload: ARObjectUpdatePayload): void;
-	static C(Other: UObject | any): ARObjectComponent;
-}
-
-declare class ARMeshUpdatePayload { 
-	SessionPayload: ARSessionPayload;
-	WorldTransform: Transform;
-	ObjectClassification: EARObjectClassification;
-	clone() : ARMeshUpdatePayload;
-	static C(Other: UObject | any): ARMeshUpdatePayload;
-}
-
-declare class ARMeshComponent extends ARComponent { 
-	ReplicatedPayload: ARMeshUpdatePayload;
-	static Load(ResourceName: string): ARMeshComponent;
-	static Find(Outer: UObject, ResourceName: string): ARMeshComponent;
-	static GetDefaultObject(): ARMeshComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARMeshComponent;
-	ServerUpdatePayload(NewPayload: ARMeshUpdatePayload): void;
-	ReceiveUpdate(Payload: ARMeshUpdatePayload): void;
-	ReceiveAdd(Payload: ARMeshUpdatePayload): void;
-	static C(Other: UObject | any): ARMeshComponent;
-}
-
-declare type EARAltitudeSource = 'Precise' | 'Coarse' | 'UserDefined' | 'Unknown' | 'EARAltitudeSource_MAX';
-declare var EARAltitudeSource : { Precise:'Precise',Coarse:'Coarse',UserDefined:'UserDefined',Unknown:'Unknown',EARAltitudeSource_MAX:'EARAltitudeSource_MAX', };
-declare class ARGeoAnchorUpdatePayload { 
-	SessionPayload: ARSessionPayload;
-	WorldTransform: Transform;
-	Longitude: number;
-	Latitude: number;
-	AltitudeMeters: number;
-	AltitudeSource: EARAltitudeSource;
-	AnchorName: string;
-	clone() : ARGeoAnchorUpdatePayload;
-	static C(Other: UObject | any): ARGeoAnchorUpdatePayload;
-}
-
-declare type EGeoAnchorComponentDebugMode = 'None' | 'ShowGeoData' | 'EGeoAnchorComponentDebugMode_MAX';
-declare var EGeoAnchorComponentDebugMode : { None:'None',ShowGeoData:'ShowGeoData',EGeoAnchorComponentDebugMode_MAX:'EGeoAnchorComponentDebugMode_MAX', };
-declare class ARGeoAnchorComponent extends ARComponent { 
-	ReplicatedPayload: ARGeoAnchorUpdatePayload;
-	static Load(ResourceName: string): ARGeoAnchorComponent;
-	static Find(Outer: UObject, ResourceName: string): ARGeoAnchorComponent;
-	static GetDefaultObject(): ARGeoAnchorComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARGeoAnchorComponent;
-	static SetGeoAnchorComponentDebugMode(NewDebugMode: EGeoAnchorComponentDebugMode): void;
-	ServerUpdatePayload(NewPayload: ARGeoAnchorUpdatePayload): void;
-	ReceiveUpdate(Payload: ARGeoAnchorUpdatePayload): void;
-	ReceiveAdd(Payload: ARGeoAnchorUpdatePayload): void;
-	static C(Other: UObject | any): ARGeoAnchorComponent;
-}
-
-declare type EMagicLeapImageTargetOrientation = 'ForwardAxisAsNormal' | 'UpAxisAsNormal' | 'EMagicLeapImageTargetOrientation_MAX';
-declare var EMagicLeapImageTargetOrientation : { ForwardAxisAsNormal:'ForwardAxisAsNormal',UpAxisAsNormal:'UpAxisAsNormal',EMagicLeapImageTargetOrientation_MAX:'EMagicLeapImageTargetOrientation_MAX', };
-declare class LuminARCandidateImage extends ARCandidateImage { 
-	bUseUnreliablePose: boolean;
-	bImageIsStationary: boolean;
-	AxisOrientation: EMagicLeapImageTargetOrientation;
-	static Load(ResourceName: string): LuminARCandidateImage;
-	static Find(Outer: UObject, ResourceName: string): LuminARCandidateImage;
-	static GetDefaultObject(): LuminARCandidateImage;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LuminARCandidateImage;
-	GetUseUnreliablePose(): boolean;
-	GetImageIsStationary(): boolean;
-	GetAxisOrientation(): EMagicLeapImageTargetOrientation;
-	static C(Other: UObject | any): LuminARCandidateImage;
-}
-
-declare class ARSessionConfig extends DataAsset { 
-	bGenerateMeshDataFromTrackedGeometry: boolean;
-	bGenerateCollisionForMeshData: boolean;
-	bGenerateNavMeshForMeshData: boolean;
-	bUseMeshDataForOcclusion: boolean;
-	bRenderMeshDataInWireframe: boolean;
-	bTrackSceneObjects: boolean;
-	bUsePersonSegmentationForOcclusion: boolean;
-	bUseSceneDepthForOcclusion: boolean;
-	bUseAutomaticImageScaleEstimation: boolean;
-	bUseStandardOnboardingUX: boolean;
-	WorldAlignment: EARWorldAlignment;
-	SessionType: EARSessionType;
-	PlaneDetectionMode: EARPlaneDetectionMode;
-	bHorizontalPlaneDetection: boolean;
-	bVerticalPlaneDetection: boolean;
-	bEnableAutoFocus: boolean;
-	LightEstimationMode: EARLightEstimationMode;
-	FrameSyncMode: EARFrameSyncMode;
-	bEnableAutomaticCameraOverlay: boolean;
-	bEnableAutomaticCameraTracking: boolean;
-	bResetCameraTracking: boolean;
-	bResetTrackedObjects: boolean;
-	CandidateImages: ARCandidateImage[];
-	MaxNumSimultaneousImagesTracked: number;
-	EnvironmentCaptureProbeType: EAREnvironmentCaptureProbeType;
-	WorldMapData: number[];
-	CandidateObjects: ARCandidateObject[];
-	DesiredVideoFormat: ARVideoFormat;
-	bUseOptimalVideoFormat: boolean;
-	FaceTrackingDirection: EARFaceTrackingDirection;
-	FaceTrackingUpdate: EARFaceTrackingUpdate;
-	MaxNumberOfTrackedFaces: number;
-	SerializedARCandidateImageDatabase: number[];
-	EnabledSessionTrackingFeature: EARSessionTrackingFeature;
-	SceneReconstructionMethod: EARSceneReconstruction;
-	PlaneComponentClass: UnrealEngineClass;
-	PointComponentClass: UnrealEngineClass;
-	FaceComponentClass: UnrealEngineClass;
-	ImageComponentClass: UnrealEngineClass;
-	QRCodeComponentClass: UnrealEngineClass;
-	PoseComponentClass: UnrealEngineClass;
-	EnvironmentProbeComponentClass: UnrealEngineClass;
-	ObjectComponentClass: UnrealEngineClass;
-	MeshComponentClass: UnrealEngineClass;
-	GeoAnchorComponentClass: UnrealEngineClass;
-	DefaultMeshMaterial: MaterialInterface;
-	DefaultWireframeMeshMaterial: MaterialInterface;
-	static Load(ResourceName: string): ARSessionConfig;
-	static Find(Outer: UObject, ResourceName: string): ARSessionConfig;
-	static GetDefaultObject(): ARSessionConfig;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARSessionConfig;
-	ShouldResetTrackedObjects(): boolean;
-	ShouldResetCameraTracking(): boolean;
-	ShouldRenderCameraOverlay(): boolean;
-	ShouldEnableCameraTracking(): boolean;
-	ShouldEnableAutoFocus(): boolean;
-	SetWorldMapData(WorldMapData: number[]): void;
-	SetSessionTrackingFeatureToEnable(InSessionTrackingFeature: EARSessionTrackingFeature): void;
-	SetSceneReconstructionMethod(InSceneReconstructionMethod: EARSceneReconstruction): void;
-	SetResetTrackedObjects(bNewValue: boolean): void;
-	SetResetCameraTracking(bNewValue: boolean): void;
-	SetFaceTrackingUpdate(InUpdate: EARFaceTrackingUpdate): void;
-	SetFaceTrackingDirection(InDirection: EARFaceTrackingDirection): void;
-	SetEnableAutoFocus(bNewValue: boolean): void;
-	SetDesiredVideoFormat(NewFormat: ARVideoFormat): void;
-	SetCandidateObjectList(InCandidateObjects: ARCandidateObject[]): void;
-	GetWorldMapData(): number[];
-	GetWorldAlignment(): EARWorldAlignment;
-	GetSessionType(): EARSessionType;
-	GetSceneReconstructionMethod(): EARSceneReconstruction;
-	GetPlaneDetectionMode(): EARPlaneDetectionMode;
-	GetMaxNumSimultaneousImagesTracked(): number;
-	GetLightEstimationMode(): EARLightEstimationMode;
-	GetFrameSyncMode(): EARFrameSyncMode;
-	GetFaceTrackingUpdate(): EARFaceTrackingUpdate;
-	GetFaceTrackingDirection(): EARFaceTrackingDirection;
-	GetEnvironmentCaptureProbeType(): EAREnvironmentCaptureProbeType;
-	GetEnabledSessionTrackingFeature(): EARSessionTrackingFeature;
-	GetDesiredVideoFormat(): ARVideoFormat;
-	GetCandidateObjectList(): ARCandidateObject[];
-	GetCandidateImageList(): ARCandidateImage[];
-	AddCandidateObject(CandidateObject: ARCandidateObject): void;
-	AddCandidateImage(NewCandidateImage: ARCandidateImage): void;
-	static C(Other: UObject | any): ARSessionConfig;
-	AddLuminRuntimeCandidateImage(CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number,bUseUnreliablePose: boolean,bImageIsStationary: boolean): LuminARCandidateImage;
-	AddLuminRuntimeCandidateImageEx(CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number,bUseUnreliablePose: boolean,bImageIsStationary: boolean,InAxisOrientation: EMagicLeapImageTargetOrientation): LuminARCandidateImage;
-	AddRuntimeCandidateImage(CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number): ARCandidateImage;
-	StartARSession(): void;
-	static AddLuminRuntimeCandidateImage(SessionConfig: ARSessionConfig,CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number,bUseUnreliablePose: boolean,bImageIsStationary: boolean): LuminARCandidateImage;
-	static AddLuminRuntimeCandidateImageEx(SessionConfig: ARSessionConfig,CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number,bUseUnreliablePose: boolean,bImageIsStationary: boolean,InAxisOrientation: EMagicLeapImageTargetOrientation): LuminARCandidateImage;
-	static AddRuntimeCandidateImage(SessionConfig: ARSessionConfig,CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number): ARCandidateImage;
-	static StartARSession(SessionConfig: ARSessionConfig): void;
-}
-
-declare class BoxComponent extends ShapeComponent { 
-	BoxExtent: Vector;
-	LineThickness: number;
-	static Load(ResourceName: string): BoxComponent;
-	static Find(Outer: UObject, ResourceName: string): BoxComponent;
-	static GetDefaultObject(): BoxComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): BoxComponent;
-	SetBoxExtent(InBoxExtent: Vector,bUpdateOverlaps: boolean): void;
-	GetUnscaledBoxExtent(): Vector;
-	GetScaledBoxExtent(): Vector;
-	static C(Other: UObject | any): BoxComponent;
-}
-
-declare class MagicLeapPolygon { 
-	Vertices: Vector[];
-	clone() : MagicLeapPolygon;
-	static C(Other: UObject | any): MagicLeapPolygon;
-}
-
-declare class MagicLeapPlaneBoundary { 
-	Polygon: MagicLeapPolygon;
-	Holes: MagicLeapPolygon[];
-	clone() : MagicLeapPlaneBoundary;
-	static C(Other: UObject | any): MagicLeapPlaneBoundary;
-}
-
-declare class MagicLeapPlaneBoundaries { 
-	ID: Guid;
-	Boundaries: MagicLeapPlaneBoundary[];
-	clone() : MagicLeapPlaneBoundaries;
-	static C(Other: UObject | any): MagicLeapPlaneBoundaries;
-}
-
-declare class MagicLeapPlanesQuery { 
-	Flags: EMagicLeapPlaneQueryFlags[];
-	SearchVolume: BoxComponent;
-	MaxResults: number;
-	MinHoleLength: number;
-	MinPlaneArea: number;
-	SearchVolumePosition: Vector;
-	SearchVolumeOrientation: Quat;
-	SearchVolumeExtents: Vector;
-	SimilarityThreshold: number;
-	bSearchVolumeTrackingSpace: boolean;
-	bResultTrackingSpace: boolean;
-	clone() : MagicLeapPlanesQuery;
-	static C(Other: UObject | any): MagicLeapPlanesQuery;
-	PlanesPersistentQueryBeginAsync(Handle: Guid,ResultDelegate: UnrealEngineDelegate<(bSuccess: boolean, QueryHandle: Guid, QueryType: EMagicLeapPlaneQueryType, NewPlanes: MagicLeapPlaneResult[], RemovedPlaneIDs: Guid[], NewPolygons: MagicLeapPlaneBoundaries[], RemovedPolygonIDs: Guid[]) => void>): boolean;
-	PlanesQueryBeginAsync(ResultDelegate: UnrealEngineDelegate<(bSuccess: boolean, planes: MagicLeapPlaneResult[], Polygons: MagicLeapPlaneBoundaries[]) => void>): boolean;
-	static PlanesPersistentQueryBeginAsync(Query: MagicLeapPlanesQuery,Handle: Guid,ResultDelegate: UnrealEngineDelegate<(bSuccess: boolean, QueryHandle: Guid, QueryType: EMagicLeapPlaneQueryType, NewPlanes: MagicLeapPlaneResult[], RemovedPlaneIDs: Guid[], NewPolygons: MagicLeapPlaneBoundaries[], RemovedPolygonIDs: Guid[]) => void>): boolean;
-	static PlanesQueryBeginAsync(Query: MagicLeapPlanesQuery,ResultDelegate: UnrealEngineDelegate<(bSuccess: boolean, planes: MagicLeapPlaneResult[], Polygons: MagicLeapPlaneBoundaries[]) => void>): boolean;
-}
-
-declare class LuminARSessionConfig extends ARSessionConfig { 
-	PlanesQuery: MagicLeapPlanesQuery;
-	MaxPlaneQueryResults: number;
-	MinPlaneArea: number;
-	bArbitraryOrientationPlaneDetection: boolean;
-	PlaneSearchExtents: Vector;
-	PlaneQueryFlags: EMagicLeapPlaneQueryFlags[];
-	bDiscardZeroExtentPlanes: boolean;
-	bDefaultUseUnreliablePose: boolean;
-	static Load(ResourceName: string): LuminARSessionConfig;
-	static Find(Outer: UObject, ResourceName: string): LuminARSessionConfig;
-	static GetDefaultObject(): LuminARSessionConfig;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LuminARSessionConfig;
-	static C(Other: UObject | any): LuminARSessionConfig;
-}
-
 declare class NiagaraTypeDefinitionHandle { 
 	RegisteredTypeIndex: number;
 	clone() : NiagaraTypeDefinitionHandle;
@@ -17319,6 +16818,507 @@ declare class NiagaraSystem extends FXSystemAsset {
 	static SpawnSystemAttached(SystemTemplate: NiagaraSystem,AttachToComponent: SceneComponent,AttachPointName: string,Location: Vector,Rotation: Rotator,LocationType: EAttachLocation,bAutoDestroy: boolean,bAutoActivate: boolean,PoolingMethod: ENCPoolMethod,bPreCullCheck: boolean): NiagaraComponent;
 }
 
+declare type EARWorldAlignment = 'Gravity' | 'GravityAndHeading' | 'Camera' | 'EARWorldAlignment_MAX';
+declare var EARWorldAlignment : { Gravity:'Gravity',GravityAndHeading:'GravityAndHeading',Camera:'Camera',EARWorldAlignment_MAX:'EARWorldAlignment_MAX', };
+declare type EARSessionType = 'None' | 'Orientation' | 'World' | 'Face' | 'Image' | 'ObjectScanning' | 'PoseTracking' | 'GeoTracking' | 'EARSessionType_MAX';
+declare var EARSessionType : { None:'None',Orientation:'Orientation',World:'World',Face:'Face',Image:'Image',ObjectScanning:'ObjectScanning',PoseTracking:'PoseTracking',GeoTracking:'GeoTracking',EARSessionType_MAX:'EARSessionType_MAX', };
+declare type EARPlaneDetectionMode = 'None' | 'HorizontalPlaneDetection' | 'VerticalPlaneDetection' | 'EARPlaneDetectionMode_MAX';
+declare var EARPlaneDetectionMode : { None:'None',HorizontalPlaneDetection:'HorizontalPlaneDetection',VerticalPlaneDetection:'VerticalPlaneDetection',EARPlaneDetectionMode_MAX:'EARPlaneDetectionMode_MAX', };
+declare type EARLightEstimationMode = 'None' | 'AmbientLightEstimate' | 'DirectionalLightEstimate' | 'EARLightEstimationMode_MAX';
+declare var EARLightEstimationMode : { None:'None',AmbientLightEstimate:'AmbientLightEstimate',DirectionalLightEstimate:'DirectionalLightEstimate',EARLightEstimationMode_MAX:'EARLightEstimationMode_MAX', };
+declare type EARFrameSyncMode = 'SyncTickWithCameraImage' | 'SyncTickWithoutCameraImage' | 'EARFrameSyncMode_MAX';
+declare var EARFrameSyncMode : { SyncTickWithCameraImage:'SyncTickWithCameraImage',SyncTickWithoutCameraImage:'SyncTickWithoutCameraImage',EARFrameSyncMode_MAX:'EARFrameSyncMode_MAX', };
+declare type EARCandidateImageOrientation = 'Landscape' | 'Portrait' | 'EARCandidateImageOrientation_MAX';
+declare var EARCandidateImageOrientation : { Landscape:'Landscape',Portrait:'Portrait',EARCandidateImageOrientation_MAX:'EARCandidateImageOrientation_MAX', };
+declare class ARCandidateImage extends DataAsset { 
+	CandidateTexture: Texture2D;
+	FriendlyName: string;
+	Width: number;
+	Height: number;
+	Orientation: EARCandidateImageOrientation;
+	static Load(ResourceName: string): ARCandidateImage;
+	static Find(Outer: UObject, ResourceName: string): ARCandidateImage;
+	static GetDefaultObject(): ARCandidateImage;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARCandidateImage;
+	GetPhysicalWidth(): number;
+	GetPhysicalHeight(): number;
+	GetOrientation(): EARCandidateImageOrientation;
+	GetFriendlyName(): string;
+	GetCandidateTexture(): Texture2D;
+	static C(Other: UObject | any): ARCandidateImage;
+}
+
+declare type EAREnvironmentCaptureProbeType = 'None' | 'Manual' | 'Automatic' | 'EAREnvironmentCaptureProbeType_MAX';
+declare var EAREnvironmentCaptureProbeType : { None:'None',Manual:'Manual',Automatic:'Automatic',EAREnvironmentCaptureProbeType_MAX:'EAREnvironmentCaptureProbeType_MAX', };
+declare class ARCandidateObject extends DataAsset { 
+	CandidateObjectData: number[];
+	FriendlyName: string;
+	BoundingBox: Box;
+	static Load(ResourceName: string): ARCandidateObject;
+	static Find(Outer: UObject, ResourceName: string): ARCandidateObject;
+	static GetDefaultObject(): ARCandidateObject;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARCandidateObject;
+	SetFriendlyName(NewName: string): void;
+	SetCandidateObjectData(InCandidateObject: number[]): void;
+	SetBoundingBox(InBoundingBox: Box): void;
+	GetFriendlyName(): string;
+	GetCandidateObjectData(): number[];
+	GetBoundingBox(): Box;
+	static C(Other: UObject | any): ARCandidateObject;
+}
+
+declare class ARVideoFormat { 
+	FPS: number;
+	Width: number;
+	Height: number;
+	clone() : ARVideoFormat;
+	static C(Other: UObject | any): ARVideoFormat;
+}
+
+declare type EARFaceTrackingDirection = 'FaceRelative' | 'FaceMirrored' | 'EARFaceTrackingDirection_MAX';
+declare var EARFaceTrackingDirection : { FaceRelative:'FaceRelative',FaceMirrored:'FaceMirrored',EARFaceTrackingDirection_MAX:'EARFaceTrackingDirection_MAX', };
+declare type EARFaceTrackingUpdate = 'CurvesAndGeo' | 'CurvesOnly' | 'EARFaceTrackingUpdate_MAX';
+declare var EARFaceTrackingUpdate : { CurvesAndGeo:'CurvesAndGeo',CurvesOnly:'CurvesOnly',EARFaceTrackingUpdate_MAX:'EARFaceTrackingUpdate_MAX', };
+declare type EARSessionTrackingFeature = 'None' | 'PoseDetection2D' | 'PersonSegmentation' | 'PersonSegmentationWithDepth' | 'SceneDepth' | 'SmoothedSceneDepth' | 'EARSessionTrackingFeature_MAX';
+declare var EARSessionTrackingFeature : { None:'None',PoseDetection2D:'PoseDetection2D',PersonSegmentation:'PersonSegmentation',PersonSegmentationWithDepth:'PersonSegmentationWithDepth',SceneDepth:'SceneDepth',SmoothedSceneDepth:'SmoothedSceneDepth',EARSessionTrackingFeature_MAX:'EARSessionTrackingFeature_MAX', };
+declare type EARSceneReconstruction = 'None' | 'MeshOnly' | 'MeshWithClassification' | 'EARSceneReconstruction_MAX';
+declare var EARSceneReconstruction : { None:'None',MeshOnly:'MeshOnly',MeshWithClassification:'MeshWithClassification',EARSceneReconstruction_MAX:'EARSceneReconstruction_MAX', };
+declare class ARComponent extends SceneComponent { 
+	NativeID: Guid;
+	bUseDefaultReplication: boolean;
+	DefaultMeshMaterial: MaterialInterface;
+	DefaultWireframeMeshMaterial: MaterialInterface;
+	MRMeshComponent: MRMeshComponent;
+	MyTrackedGeometry: ARTrackedGeometry;
+	static Load(ResourceName: string): ARComponent;
+	static Find(Outer: UObject, ResourceName: string): ARComponent;
+	static GetDefaultObject(): ARComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARComponent;
+	UpdateVisualization(): void;
+	SetNativeID(NativeID: Guid): void;
+	ReceiveRemove(): void;
+	OnRep_Payload(): void;
+	GetMRMesh(): MRMeshComponent;
+	static C(Other: UObject | any): ARComponent;
+}
+
+declare class ARSessionPayload { 
+	ConfigFlags: number;
+	DefaultMeshMaterial: MaterialInterface;
+	DefaultWireframeMeshMaterial: MaterialInterface;
+	clone() : ARSessionPayload;
+	static C(Other: UObject | any): ARSessionPayload;
+}
+
+declare class ARPlaneUpdatePayload { 
+	SessionPayload: ARSessionPayload;
+	WorldTransform: Transform;
+	Center: Vector;
+	Extents: Vector;
+	BoundaryVertices: Vector[];
+	ObjectClassification: EARObjectClassification;
+	clone() : ARPlaneUpdatePayload;
+	static C(Other: UObject | any): ARPlaneUpdatePayload;
+}
+
+declare type EPlaneComponentDebugMode = 'None' | 'ShowNetworkRole' | 'ShowClassification' | 'EPlaneComponentDebugMode_MAX';
+declare var EPlaneComponentDebugMode : { None:'None',ShowNetworkRole:'ShowNetworkRole',ShowClassification:'ShowClassification',EPlaneComponentDebugMode_MAX:'EPlaneComponentDebugMode_MAX', };
+declare class ARPlaneComponent extends ARComponent { 
+	ReplicatedPayload: ARPlaneUpdatePayload;
+	static Load(ResourceName: string): ARPlaneComponent;
+	static Find(Outer: UObject, ResourceName: string): ARPlaneComponent;
+	static GetDefaultObject(): ARPlaneComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARPlaneComponent;
+	static SetPlaneComponentDebugMode(NewDebugMode: EPlaneComponentDebugMode): void;
+	static SetObjectClassificationDebugColors(InColors: any): void;
+	ServerUpdatePayload(NewPayload: ARPlaneUpdatePayload): void;
+	ReceiveUpdate(Payload: ARPlaneUpdatePayload): void;
+	ReceiveAdd(Payload: ARPlaneUpdatePayload): void;
+	static GetObjectClassificationDebugColors(): any;
+	static C(Other: UObject | any): ARPlaneComponent;
+}
+
+declare class ARPointUpdatePayload { 
+	clone() : ARPointUpdatePayload;
+	static C(Other: UObject | any): ARPointUpdatePayload;
+}
+
+declare class ARPointComponent extends ARComponent { 
+	ReplicatedPayload: ARPointUpdatePayload;
+	static Load(ResourceName: string): ARPointComponent;
+	static Find(Outer: UObject, ResourceName: string): ARPointComponent;
+	static GetDefaultObject(): ARPointComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARPointComponent;
+	ServerUpdatePayload(NewPayload: ARPointUpdatePayload): void;
+	ReceiveUpdate(Payload: ARPointUpdatePayload): void;
+	ReceiveAdd(Payload: ARPointUpdatePayload): void;
+	static C(Other: UObject | any): ARPointComponent;
+}
+
+declare type EARFaceTransformMixing = 'ComponentOnly' | 'ComponentLocationTrackedRotation' | 'ComponentWithTracked' | 'TrackingOnly' | 'EARFaceTransformMixing_MAX';
+declare var EARFaceTransformMixing : { ComponentOnly:'ComponentOnly',ComponentLocationTrackedRotation:'ComponentLocationTrackedRotation',ComponentWithTracked:'ComponentWithTracked',TrackingOnly:'TrackingOnly',EARFaceTransformMixing_MAX:'EARFaceTransformMixing_MAX', };
+declare class ARFaceUpdatePayload { 
+	SessionPayload: ARSessionPayload;
+	LeftEyePosition: Vector;
+	RightEyePosition: Vector;
+	LookAtTarget: Vector;
+	clone() : ARFaceUpdatePayload;
+	static C(Other: UObject | any): ARFaceUpdatePayload;
+}
+
+declare type EFaceComponentDebugMode = 'None' | 'ShowEyeVectors' | 'ShowFaceMesh' | 'EFaceComponentDebugMode_MAX';
+declare var EFaceComponentDebugMode : { None:'None',ShowEyeVectors:'ShowEyeVectors',ShowFaceMesh:'ShowFaceMesh',EFaceComponentDebugMode_MAX:'EFaceComponentDebugMode_MAX', };
+declare class ARFaceComponent extends ARComponent { 
+	TransformSetting: EARFaceTransformMixing;
+	bUpdateVertexNormal: boolean;
+	bFaceOutOfScreen: boolean;
+	ReplicatedPayload: ARFaceUpdatePayload;
+	static Load(ResourceName: string): ARFaceComponent;
+	static Find(Outer: UObject, ResourceName: string): ARFaceComponent;
+	static GetDefaultObject(): ARFaceComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARFaceComponent;
+	static SetFaceComponentDebugMode(NewDebugMode: EFaceComponentDebugMode): void;
+	ServerUpdatePayload(NewPayload: ARFaceUpdatePayload): void;
+	ReceiveUpdate(Payload: ARFaceUpdatePayload): void;
+	ReceiveAdd(Payload: ARFaceUpdatePayload): void;
+	static C(Other: UObject | any): ARFaceComponent;
+}
+
+declare class ARImageUpdatePayload { 
+	SessionPayload: ARSessionPayload;
+	WorldTransform: Transform;
+	DetectedImage: ARCandidateImage;
+	EstimatedSize: Vector2D;
+	clone() : ARImageUpdatePayload;
+	static C(Other: UObject | any): ARImageUpdatePayload;
+}
+
+declare type EImageComponentDebugMode = 'None' | 'ShowDetectedImage' | 'EImageComponentDebugMode_MAX';
+declare var EImageComponentDebugMode : { None:'None',ShowDetectedImage:'ShowDetectedImage',EImageComponentDebugMode_MAX:'EImageComponentDebugMode_MAX', };
+declare class ARImageComponent extends ARComponent { 
+	ReplicatedPayload: ARImageUpdatePayload;
+	static Load(ResourceName: string): ARImageComponent;
+	static Find(Outer: UObject, ResourceName: string): ARImageComponent;
+	static GetDefaultObject(): ARImageComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARImageComponent;
+	static SetImageComponentDebugMode(NewDebugMode: EImageComponentDebugMode): void;
+	ServerUpdatePayload(NewPayload: ARImageUpdatePayload): void;
+	ReceiveUpdate(Payload: ARImageUpdatePayload): void;
+	ReceiveAdd(Payload: ARImageUpdatePayload): void;
+	static C(Other: UObject | any): ARImageComponent;
+}
+
+declare class ARQRCodeUpdatePayload { 
+	SessionPayload: ARSessionPayload;
+	WorldTransform: Transform;
+	Extents: Vector;
+	QRCode: string;
+	clone() : ARQRCodeUpdatePayload;
+	static C(Other: UObject | any): ARQRCodeUpdatePayload;
+}
+
+declare type EQRCodeComponentDebugMode = 'None' | 'ShowQRCode' | 'EQRCodeComponentDebugMode_MAX';
+declare var EQRCodeComponentDebugMode : { None:'None',ShowQRCode:'ShowQRCode',EQRCodeComponentDebugMode_MAX:'EQRCodeComponentDebugMode_MAX', };
+declare class ARQRCodeComponent extends ARComponent { 
+	ReplicatedPayload: ARQRCodeUpdatePayload;
+	static Load(ResourceName: string): ARQRCodeComponent;
+	static Find(Outer: UObject, ResourceName: string): ARQRCodeComponent;
+	static GetDefaultObject(): ARQRCodeComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARQRCodeComponent;
+	static SetQRCodeComponentDebugMode(NewDebugMode: EQRCodeComponentDebugMode): void;
+	ServerUpdatePayload(NewPayload: ARQRCodeUpdatePayload): void;
+	ReceiveUpdate(Payload: ARQRCodeUpdatePayload): void;
+	ReceiveAdd(Payload: ARQRCodeUpdatePayload): void;
+	static C(Other: UObject | any): ARQRCodeComponent;
+}
+
+declare class ARPoseUpdatePayload { 
+	WorldTransform: Transform;
+	JointTransforms: Transform[];
+	clone() : ARPoseUpdatePayload;
+	static C(Other: UObject | any): ARPoseUpdatePayload;
+}
+
+declare type EPoseComponentDebugMode = 'None' | 'ShowSkeleton' | 'EPoseComponentDebugMode_MAX';
+declare var EPoseComponentDebugMode : { None:'None',ShowSkeleton:'ShowSkeleton',EPoseComponentDebugMode_MAX:'EPoseComponentDebugMode_MAX', };
+declare class ARPoseComponent extends ARComponent { 
+	ReplicatedPayload: ARPoseUpdatePayload;
+	static Load(ResourceName: string): ARPoseComponent;
+	static Find(Outer: UObject, ResourceName: string): ARPoseComponent;
+	static GetDefaultObject(): ARPoseComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARPoseComponent;
+	static SetPoseComponentDebugMode(NewDebugMode: EPoseComponentDebugMode): void;
+	ServerUpdatePayload(NewPayload: ARPoseUpdatePayload): void;
+	ReceiveUpdate(Payload: ARPoseUpdatePayload): void;
+	ReceiveAdd(Payload: ARPoseUpdatePayload): void;
+	static C(Other: UObject | any): ARPoseComponent;
+}
+
+declare class AREnvironmentProbeUpdatePayload { 
+	WorldTransform: Transform;
+	clone() : AREnvironmentProbeUpdatePayload;
+	static C(Other: UObject | any): AREnvironmentProbeUpdatePayload;
+}
+
+declare class AREnvironmentProbeComponent extends ARComponent { 
+	ReplicatedPayload: AREnvironmentProbeUpdatePayload;
+	static Load(ResourceName: string): AREnvironmentProbeComponent;
+	static Find(Outer: UObject, ResourceName: string): AREnvironmentProbeComponent;
+	static GetDefaultObject(): AREnvironmentProbeComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AREnvironmentProbeComponent;
+	ServerUpdatePayload(NewPayload: AREnvironmentProbeUpdatePayload): void;
+	ReceiveUpdate(Payload: AREnvironmentProbeUpdatePayload): void;
+	ReceiveAdd(Payload: AREnvironmentProbeUpdatePayload): void;
+	static C(Other: UObject | any): AREnvironmentProbeComponent;
+}
+
+declare class ARObjectUpdatePayload { 
+	WorldTransform: Transform;
+	clone() : ARObjectUpdatePayload;
+	static C(Other: UObject | any): ARObjectUpdatePayload;
+}
+
+declare class ARObjectComponent extends ARComponent { 
+	ReplicatedPayload: ARObjectUpdatePayload;
+	static Load(ResourceName: string): ARObjectComponent;
+	static Find(Outer: UObject, ResourceName: string): ARObjectComponent;
+	static GetDefaultObject(): ARObjectComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARObjectComponent;
+	ServerUpdatePayload(NewPayload: ARObjectUpdatePayload): void;
+	ReceiveUpdate(Payload: ARObjectUpdatePayload): void;
+	ReceiveAdd(Payload: ARObjectUpdatePayload): void;
+	static C(Other: UObject | any): ARObjectComponent;
+}
+
+declare class ARMeshUpdatePayload { 
+	SessionPayload: ARSessionPayload;
+	WorldTransform: Transform;
+	ObjectClassification: EARObjectClassification;
+	clone() : ARMeshUpdatePayload;
+	static C(Other: UObject | any): ARMeshUpdatePayload;
+}
+
+declare class ARMeshComponent extends ARComponent { 
+	ReplicatedPayload: ARMeshUpdatePayload;
+	static Load(ResourceName: string): ARMeshComponent;
+	static Find(Outer: UObject, ResourceName: string): ARMeshComponent;
+	static GetDefaultObject(): ARMeshComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARMeshComponent;
+	ServerUpdatePayload(NewPayload: ARMeshUpdatePayload): void;
+	ReceiveUpdate(Payload: ARMeshUpdatePayload): void;
+	ReceiveAdd(Payload: ARMeshUpdatePayload): void;
+	static C(Other: UObject | any): ARMeshComponent;
+}
+
+declare type EARAltitudeSource = 'Precise' | 'Coarse' | 'UserDefined' | 'Unknown' | 'EARAltitudeSource_MAX';
+declare var EARAltitudeSource : { Precise:'Precise',Coarse:'Coarse',UserDefined:'UserDefined',Unknown:'Unknown',EARAltitudeSource_MAX:'EARAltitudeSource_MAX', };
+declare class ARGeoAnchorUpdatePayload { 
+	SessionPayload: ARSessionPayload;
+	WorldTransform: Transform;
+	Longitude: number;
+	Latitude: number;
+	AltitudeMeters: number;
+	AltitudeSource: EARAltitudeSource;
+	AnchorName: string;
+	clone() : ARGeoAnchorUpdatePayload;
+	static C(Other: UObject | any): ARGeoAnchorUpdatePayload;
+}
+
+declare type EGeoAnchorComponentDebugMode = 'None' | 'ShowGeoData' | 'EGeoAnchorComponentDebugMode_MAX';
+declare var EGeoAnchorComponentDebugMode : { None:'None',ShowGeoData:'ShowGeoData',EGeoAnchorComponentDebugMode_MAX:'EGeoAnchorComponentDebugMode_MAX', };
+declare class ARGeoAnchorComponent extends ARComponent { 
+	ReplicatedPayload: ARGeoAnchorUpdatePayload;
+	static Load(ResourceName: string): ARGeoAnchorComponent;
+	static Find(Outer: UObject, ResourceName: string): ARGeoAnchorComponent;
+	static GetDefaultObject(): ARGeoAnchorComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARGeoAnchorComponent;
+	static SetGeoAnchorComponentDebugMode(NewDebugMode: EGeoAnchorComponentDebugMode): void;
+	ServerUpdatePayload(NewPayload: ARGeoAnchorUpdatePayload): void;
+	ReceiveUpdate(Payload: ARGeoAnchorUpdatePayload): void;
+	ReceiveAdd(Payload: ARGeoAnchorUpdatePayload): void;
+	static C(Other: UObject | any): ARGeoAnchorComponent;
+}
+
+declare type EMagicLeapImageTargetOrientation = 'ForwardAxisAsNormal' | 'UpAxisAsNormal' | 'EMagicLeapImageTargetOrientation_MAX';
+declare var EMagicLeapImageTargetOrientation : { ForwardAxisAsNormal:'ForwardAxisAsNormal',UpAxisAsNormal:'UpAxisAsNormal',EMagicLeapImageTargetOrientation_MAX:'EMagicLeapImageTargetOrientation_MAX', };
+declare class LuminARCandidateImage extends ARCandidateImage { 
+	bUseUnreliablePose: boolean;
+	bImageIsStationary: boolean;
+	AxisOrientation: EMagicLeapImageTargetOrientation;
+	static Load(ResourceName: string): LuminARCandidateImage;
+	static Find(Outer: UObject, ResourceName: string): LuminARCandidateImage;
+	static GetDefaultObject(): LuminARCandidateImage;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LuminARCandidateImage;
+	GetUseUnreliablePose(): boolean;
+	GetImageIsStationary(): boolean;
+	GetAxisOrientation(): EMagicLeapImageTargetOrientation;
+	static C(Other: UObject | any): LuminARCandidateImage;
+}
+
+declare class ARSessionConfig extends DataAsset { 
+	bGenerateMeshDataFromTrackedGeometry: boolean;
+	bGenerateCollisionForMeshData: boolean;
+	bGenerateNavMeshForMeshData: boolean;
+	bUseMeshDataForOcclusion: boolean;
+	bRenderMeshDataInWireframe: boolean;
+	bTrackSceneObjects: boolean;
+	bUsePersonSegmentationForOcclusion: boolean;
+	bUseSceneDepthForOcclusion: boolean;
+	bUseAutomaticImageScaleEstimation: boolean;
+	bUseStandardOnboardingUX: boolean;
+	WorldAlignment: EARWorldAlignment;
+	SessionType: EARSessionType;
+	PlaneDetectionMode: EARPlaneDetectionMode;
+	bHorizontalPlaneDetection: boolean;
+	bVerticalPlaneDetection: boolean;
+	bEnableAutoFocus: boolean;
+	LightEstimationMode: EARLightEstimationMode;
+	FrameSyncMode: EARFrameSyncMode;
+	bEnableAutomaticCameraOverlay: boolean;
+	bEnableAutomaticCameraTracking: boolean;
+	bResetCameraTracking: boolean;
+	bResetTrackedObjects: boolean;
+	CandidateImages: ARCandidateImage[];
+	MaxNumSimultaneousImagesTracked: number;
+	EnvironmentCaptureProbeType: EAREnvironmentCaptureProbeType;
+	WorldMapData: number[];
+	CandidateObjects: ARCandidateObject[];
+	DesiredVideoFormat: ARVideoFormat;
+	bUseOptimalVideoFormat: boolean;
+	FaceTrackingDirection: EARFaceTrackingDirection;
+	FaceTrackingUpdate: EARFaceTrackingUpdate;
+	MaxNumberOfTrackedFaces: number;
+	SerializedARCandidateImageDatabase: number[];
+	EnabledSessionTrackingFeature: EARSessionTrackingFeature;
+	SceneReconstructionMethod: EARSceneReconstruction;
+	PlaneComponentClass: UnrealEngineClass;
+	PointComponentClass: UnrealEngineClass;
+	FaceComponentClass: UnrealEngineClass;
+	ImageComponentClass: UnrealEngineClass;
+	QRCodeComponentClass: UnrealEngineClass;
+	PoseComponentClass: UnrealEngineClass;
+	EnvironmentProbeComponentClass: UnrealEngineClass;
+	ObjectComponentClass: UnrealEngineClass;
+	MeshComponentClass: UnrealEngineClass;
+	GeoAnchorComponentClass: UnrealEngineClass;
+	DefaultMeshMaterial: MaterialInterface;
+	DefaultWireframeMeshMaterial: MaterialInterface;
+	static Load(ResourceName: string): ARSessionConfig;
+	static Find(Outer: UObject, ResourceName: string): ARSessionConfig;
+	static GetDefaultObject(): ARSessionConfig;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): ARSessionConfig;
+	ShouldResetTrackedObjects(): boolean;
+	ShouldResetCameraTracking(): boolean;
+	ShouldRenderCameraOverlay(): boolean;
+	ShouldEnableCameraTracking(): boolean;
+	ShouldEnableAutoFocus(): boolean;
+	SetWorldMapData(WorldMapData: number[]): void;
+	SetSessionTrackingFeatureToEnable(InSessionTrackingFeature: EARSessionTrackingFeature): void;
+	SetSceneReconstructionMethod(InSceneReconstructionMethod: EARSceneReconstruction): void;
+	SetResetTrackedObjects(bNewValue: boolean): void;
+	SetResetCameraTracking(bNewValue: boolean): void;
+	SetFaceTrackingUpdate(InUpdate: EARFaceTrackingUpdate): void;
+	SetFaceTrackingDirection(InDirection: EARFaceTrackingDirection): void;
+	SetEnableAutoFocus(bNewValue: boolean): void;
+	SetDesiredVideoFormat(NewFormat: ARVideoFormat): void;
+	SetCandidateObjectList(InCandidateObjects: ARCandidateObject[]): void;
+	GetWorldMapData(): number[];
+	GetWorldAlignment(): EARWorldAlignment;
+	GetSessionType(): EARSessionType;
+	GetSceneReconstructionMethod(): EARSceneReconstruction;
+	GetPlaneDetectionMode(): EARPlaneDetectionMode;
+	GetMaxNumSimultaneousImagesTracked(): number;
+	GetLightEstimationMode(): EARLightEstimationMode;
+	GetFrameSyncMode(): EARFrameSyncMode;
+	GetFaceTrackingUpdate(): EARFaceTrackingUpdate;
+	GetFaceTrackingDirection(): EARFaceTrackingDirection;
+	GetEnvironmentCaptureProbeType(): EAREnvironmentCaptureProbeType;
+	GetEnabledSessionTrackingFeature(): EARSessionTrackingFeature;
+	GetDesiredVideoFormat(): ARVideoFormat;
+	GetCandidateObjectList(): ARCandidateObject[];
+	GetCandidateImageList(): ARCandidateImage[];
+	AddCandidateObject(CandidateObject: ARCandidateObject): void;
+	AddCandidateImage(NewCandidateImage: ARCandidateImage): void;
+	static C(Other: UObject | any): ARSessionConfig;
+	AddLuminRuntimeCandidateImage(CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number,bUseUnreliablePose: boolean,bImageIsStationary: boolean): LuminARCandidateImage;
+	AddLuminRuntimeCandidateImageEx(CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number,bUseUnreliablePose: boolean,bImageIsStationary: boolean,InAxisOrientation: EMagicLeapImageTargetOrientation): LuminARCandidateImage;
+	AddRuntimeCandidateImage(CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number): ARCandidateImage;
+	StartARSession(): void;
+	static AddLuminRuntimeCandidateImage(SessionConfig: ARSessionConfig,CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number,bUseUnreliablePose: boolean,bImageIsStationary: boolean): LuminARCandidateImage;
+	static AddLuminRuntimeCandidateImageEx(SessionConfig: ARSessionConfig,CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number,bUseUnreliablePose: boolean,bImageIsStationary: boolean,InAxisOrientation: EMagicLeapImageTargetOrientation): LuminARCandidateImage;
+	static AddRuntimeCandidateImage(SessionConfig: ARSessionConfig,CandidateTexture: Texture2D,FriendlyName: string,PhysicalWidth: number): ARCandidateImage;
+	static StartARSession(SessionConfig: ARSessionConfig): void;
+}
+
+declare class BoxComponent extends ShapeComponent { 
+	BoxExtent: Vector;
+	LineThickness: number;
+	static Load(ResourceName: string): BoxComponent;
+	static Find(Outer: UObject, ResourceName: string): BoxComponent;
+	static GetDefaultObject(): BoxComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): BoxComponent;
+	SetBoxExtent(InBoxExtent: Vector,bUpdateOverlaps: boolean): void;
+	GetUnscaledBoxExtent(): Vector;
+	GetScaledBoxExtent(): Vector;
+	static C(Other: UObject | any): BoxComponent;
+}
+
+declare class MagicLeapPolygon { 
+	Vertices: Vector[];
+	clone() : MagicLeapPolygon;
+	static C(Other: UObject | any): MagicLeapPolygon;
+}
+
+declare class MagicLeapPlaneBoundary { 
+	Polygon: MagicLeapPolygon;
+	Holes: MagicLeapPolygon[];
+	clone() : MagicLeapPlaneBoundary;
+	static C(Other: UObject | any): MagicLeapPlaneBoundary;
+}
+
+declare class MagicLeapPlaneBoundaries { 
+	ID: Guid;
+	Boundaries: MagicLeapPlaneBoundary[];
+	clone() : MagicLeapPlaneBoundaries;
+	static C(Other: UObject | any): MagicLeapPlaneBoundaries;
+}
+
+declare class MagicLeapPlanesQuery { 
+	Flags: EMagicLeapPlaneQueryFlags[];
+	SearchVolume: BoxComponent;
+	MaxResults: number;
+	MinHoleLength: number;
+	MinPlaneArea: number;
+	SearchVolumePosition: Vector;
+	SearchVolumeOrientation: Quat;
+	SearchVolumeExtents: Vector;
+	SimilarityThreshold: number;
+	bSearchVolumeTrackingSpace: boolean;
+	bResultTrackingSpace: boolean;
+	clone() : MagicLeapPlanesQuery;
+	static C(Other: UObject | any): MagicLeapPlanesQuery;
+	PlanesPersistentQueryBeginAsync(Handle: Guid,ResultDelegate: UnrealEngineDelegate<(bSuccess: boolean, QueryHandle: Guid, QueryType: EMagicLeapPlaneQueryType, NewPlanes: MagicLeapPlaneResult[], RemovedPlaneIDs: Guid[], NewPolygons: MagicLeapPlaneBoundaries[], RemovedPolygonIDs: Guid[]) => void>): boolean;
+	PlanesQueryBeginAsync(ResultDelegate: UnrealEngineDelegate<(bSuccess: boolean, planes: MagicLeapPlaneResult[], Polygons: MagicLeapPlaneBoundaries[]) => void>): boolean;
+	static PlanesPersistentQueryBeginAsync(Query: MagicLeapPlanesQuery,Handle: Guid,ResultDelegate: UnrealEngineDelegate<(bSuccess: boolean, QueryHandle: Guid, QueryType: EMagicLeapPlaneQueryType, NewPlanes: MagicLeapPlaneResult[], RemovedPlaneIDs: Guid[], NewPolygons: MagicLeapPlaneBoundaries[], RemovedPolygonIDs: Guid[]) => void>): boolean;
+	static PlanesQueryBeginAsync(Query: MagicLeapPlanesQuery,ResultDelegate: UnrealEngineDelegate<(bSuccess: boolean, planes: MagicLeapPlaneResult[], Polygons: MagicLeapPlaneBoundaries[]) => void>): boolean;
+}
+
+declare class LuminARSessionConfig extends ARSessionConfig { 
+	PlanesQuery: MagicLeapPlanesQuery;
+	MaxPlaneQueryResults: number;
+	MinPlaneArea: number;
+	bArbitraryOrientationPlaneDetection: boolean;
+	PlaneSearchExtents: Vector;
+	PlaneQueryFlags: EMagicLeapPlaneQueryFlags[];
+	bDiscardZeroExtentPlanes: boolean;
+	bDefaultUseUnreliablePose: boolean;
+	static Load(ResourceName: string): LuminARSessionConfig;
+	static Find(Outer: UObject, ResourceName: string): LuminARSessionConfig;
+	static GetDefaultObject(): LuminARSessionConfig;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LuminARSessionConfig;
+	static C(Other: UObject | any): LuminARSessionConfig;
+}
+
 declare class TraceChannelTestBatchOptions { 
 	bLineTrace: boolean;
 	bSphereTrace: boolean;
@@ -17785,10 +17785,10 @@ declare class World extends UObject {
 	IsGameWorld(): boolean;
 	IsPlayInEditor(): boolean;
 	IsPlayInPreview(): boolean;
-	LuminARLineTrace(ScreenPosition: Vector2D,TraceChannels: any,OutHitResults?: ARTraceResult[]): {OutHitResults: ARTraceResult[], $: boolean};
-	StartLuminARSession(LatentInfo: LatentActionInfo,Configuration: LuminARSessionConfig): void;
 	GetNiagaraParameterCollection(Collection: NiagaraParameterCollection): NiagaraParameterCollectionInstance;
 	SpawnSystemAtLocation(SystemTemplate: NiagaraSystem,Location: Vector,Rotation: Rotator,Scale: Vector,bAutoDestroy: boolean,bAutoActivate: boolean,PoolingMethod: ENCPoolMethod,bPreCullCheck: boolean): NiagaraComponent;
+	LuminARLineTrace(ScreenPosition: Vector2D,TraceChannels: any,OutHitResults?: ARTraceResult[]): {OutHitResults: ARTraceResult[], $: boolean};
+	StartLuminARSession(LatentInfo: LatentActionInfo,Configuration: LuminARSessionConfig): void;
 	TraceChannelTestUtil(BatchOptions: TraceChannelTestBatchOptions,Start: Vector,End: Vector,SphereCapsuleRadius: number,CapsuleHalfHeight: number,BoxHalfSize: Vector,Orientation: Rotator,TraceChannel: ETraceTypeQuery,ObjectTypes: EObjectTypeQuery[],ProfileName: string,bTraceComplex: boolean,ActorsToIgnore: Actor[],bIgnoreSelf: boolean,DrawDebugType: EDrawDebugTrace,TraceColor: LinearColor,TraceHitColor: LinearColor,DrawTime: number): TraceQueryTestResults;
 	RunAllFunctionalTests(bNewLog: boolean,bRunLooped: boolean,FailedTestsReproString: string): boolean;
 	AutomationWaitForLoading(LatentInfo: LatentActionInfo,Options: AutomationWaitForLoadingOptions): void;
@@ -18059,10 +18059,10 @@ declare class World extends UObject {
 	static IsGameWorld(World: World): boolean;
 	static IsPlayInEditor(World: World): boolean;
 	static IsPlayInPreview(World: World): boolean;
-	static LuminARLineTrace(WorldContextObject: UObject,ScreenPosition: Vector2D,TraceChannels: any,OutHitResults?: ARTraceResult[]): {OutHitResults: ARTraceResult[], $: boolean};
-	static StartLuminARSession(WorldContextObject: UObject,LatentInfo: LatentActionInfo,Configuration: LuminARSessionConfig): void;
 	static GetNiagaraParameterCollection(WorldContextObject: UObject,Collection: NiagaraParameterCollection): NiagaraParameterCollectionInstance;
 	static SpawnSystemAtLocation(WorldContextObject: UObject,SystemTemplate: NiagaraSystem,Location: Vector,Rotation: Rotator,Scale: Vector,bAutoDestroy: boolean,bAutoActivate: boolean,PoolingMethod: ENCPoolMethod,bPreCullCheck: boolean): NiagaraComponent;
+	static LuminARLineTrace(WorldContextObject: UObject,ScreenPosition: Vector2D,TraceChannels: any,OutHitResults?: ARTraceResult[]): {OutHitResults: ARTraceResult[], $: boolean};
+	static StartLuminARSession(WorldContextObject: UObject,LatentInfo: LatentActionInfo,Configuration: LuminARSessionConfig): void;
 	static TraceChannelTestUtil(WorldContextObject: UObject,BatchOptions: TraceChannelTestBatchOptions,Start: Vector,End: Vector,SphereCapsuleRadius: number,CapsuleHalfHeight: number,BoxHalfSize: Vector,Orientation: Rotator,TraceChannel: ETraceTypeQuery,ObjectTypes: EObjectTypeQuery[],ProfileName: string,bTraceComplex: boolean,ActorsToIgnore: Actor[],bIgnoreSelf: boolean,DrawDebugType: EDrawDebugTrace,TraceColor: LinearColor,TraceHitColor: LinearColor,DrawTime: number): TraceQueryTestResults;
 	static RunAllFunctionalTests(WorldContextObject: UObject,bNewLog: boolean,bRunLooped: boolean,FailedTestsReproString: string): boolean;
 	static AutomationWaitForLoading(WorldContextObject: UObject,LatentInfo: LatentActionInfo,Options: AutomationWaitForLoadingOptions): void;
