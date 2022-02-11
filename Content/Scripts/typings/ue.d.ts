@@ -867,6 +867,24 @@ declare class OnSetDefaultValue__PythonCallable extends PythonCallableForDelegat
 	static C(Other: UObject | any): OnSetDefaultValue__PythonCallable;
 }
 
+declare class AudioSynesthesiaNRTFactory extends Factory { 
+	AudioSynesthesiaNRTClass: UnrealEngineClass;
+	static Load(ResourceName: string): AudioSynesthesiaNRTFactory;
+	static Find(Outer: UObject, ResourceName: string): AudioSynesthesiaNRTFactory;
+	static GetDefaultObject(): AudioSynesthesiaNRTFactory;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AudioSynesthesiaNRTFactory;
+	static C(Other: UObject | any): AudioSynesthesiaNRTFactory;
+}
+
+declare class AudioSynesthesiaNRTSettingsFactory extends Factory { 
+	AudioSynesthesiaNRTSettingsClass: UnrealEngineClass;
+	static Load(ResourceName: string): AudioSynesthesiaNRTSettingsFactory;
+	static Find(Outer: UObject, ResourceName: string): AudioSynesthesiaNRTSettingsFactory;
+	static GetDefaultObject(): AudioSynesthesiaNRTSettingsFactory;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): AudioSynesthesiaNRTSettingsFactory;
+	static C(Other: UObject | any): AudioSynesthesiaNRTSettingsFactory;
+}
+
 declare class MockAI extends UObject { 
 	BBComp: BlackboardComponent;
 	BrainComp: BrainComponent;

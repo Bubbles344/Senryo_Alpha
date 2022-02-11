@@ -16608,6 +16608,515 @@ declare class WmfMediaSettings extends UObject {
 	static C(Other: UObject | any): WmfMediaSettings;
 }
 
+declare class EyeTrackerStereoGazeData { 
+	LeftEyeOrigin: Vector;
+	LeftEyeDirection: Vector;
+	RightEyeOrigin: Vector;
+	RightEyeDirection: Vector;
+	FixationPoint: Vector;
+	ConfidenceValue: number;
+	clone() : EyeTrackerStereoGazeData;
+	static C(Other: UObject | any): EyeTrackerStereoGazeData;
+	GetStereoGazeData(): {OutGazeData: EyeTrackerStereoGazeData, $: boolean};
+	static GetStereoGazeData(OutGazeData?: EyeTrackerStereoGazeData): {OutGazeData: EyeTrackerStereoGazeData, $: boolean};
+}
+
+declare class EyeTrackerGazeData { 
+	GazeOrigin: Vector;
+	GazeDirection: Vector;
+	FixationPoint: Vector;
+	ConfidenceValue: number;
+	clone() : EyeTrackerGazeData;
+	static C(Other: UObject | any): EyeTrackerGazeData;
+	GetGazeData(): {OutGazeData: EyeTrackerGazeData, $: boolean};
+	static GetGazeData(OutGazeData?: EyeTrackerGazeData): {OutGazeData: EyeTrackerGazeData, $: boolean};
+}
+
+declare class EyeTrackerFunctionLibrary extends BlueprintFunctionLibrary { 
+	static Load(ResourceName: string): EyeTrackerFunctionLibrary;
+	static Find(Outer: UObject, ResourceName: string): EyeTrackerFunctionLibrary;
+	static GetDefaultObject(): EyeTrackerFunctionLibrary;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): EyeTrackerFunctionLibrary;
+	static SetEyeTrackedPlayer(PlayerController: PlayerController): void;
+	static IsStereoGazeDataAvailable(): boolean;
+	static IsEyeTrackerConnected(): boolean;
+	static GetStereoGazeData(OutGazeData?: EyeTrackerStereoGazeData): {OutGazeData: EyeTrackerStereoGazeData, $: boolean};
+	static GetGazeData(OutGazeData?: EyeTrackerGazeData): {OutGazeData: EyeTrackerGazeData, $: boolean};
+	static C(Other: UObject | any): EyeTrackerFunctionLibrary;
+}
+
+declare class LiveLinkBasicFrameInterpolationProcessor extends LiveLinkFrameInterpolationProcessor { 
+	bInterpolatePropertyValues: boolean;
+	static Load(ResourceName: string): LiveLinkBasicFrameInterpolationProcessor;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkBasicFrameInterpolationProcessor;
+	static GetDefaultObject(): LiveLinkBasicFrameInterpolationProcessor;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkBasicFrameInterpolationProcessor;
+	static C(Other: UObject | any): LiveLinkBasicFrameInterpolationProcessor;
+}
+
+declare class LiveLinkAnimationFrameInterpolationProcessor extends LiveLinkBasicFrameInterpolationProcessor { 
+	static Load(ResourceName: string): LiveLinkAnimationFrameInterpolationProcessor;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkAnimationFrameInterpolationProcessor;
+	static GetDefaultObject(): LiveLinkAnimationFrameInterpolationProcessor;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkAnimationFrameInterpolationProcessor;
+	static C(Other: UObject | any): LiveLinkAnimationFrameInterpolationProcessor;
+}
+
+declare class LiveLinkAnimationRoleToTransform extends LiveLinkFrameTranslator { 
+	BoneName: string;
+	static Load(ResourceName: string): LiveLinkAnimationRoleToTransform;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkAnimationRoleToTransform;
+	static GetDefaultObject(): LiveLinkAnimationRoleToTransform;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkAnimationRoleToTransform;
+	static C(Other: UObject | any): LiveLinkAnimationRoleToTransform;
+}
+
+declare class LiveLinkAnimationVirtualSubject extends LiveLinkVirtualSubject { 
+	bAppendSubjectNameToBones: boolean;
+	static Load(ResourceName: string): LiveLinkAnimationVirtualSubject;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkAnimationVirtualSubject;
+	static GetDefaultObject(): LiveLinkAnimationVirtualSubject;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkAnimationVirtualSubject;
+	static C(Other: UObject | any): LiveLinkAnimationVirtualSubject;
+}
+
+declare type ELiveLinkAxis = 'X' | 'Y' | 'Z' | 'XNeg' | 'YNeg' | 'ZNeg' | 'ELiveLinkAxis_MAX';
+declare var ELiveLinkAxis : { X:'X',Y:'Y',Z:'Z',XNeg:'XNeg',YNeg:'YNeg',ZNeg:'ZNeg',ELiveLinkAxis_MAX:'ELiveLinkAxis_MAX', };
+declare class LiveLinkTransformAxisSwitchPreProcessor extends LiveLinkFramePreProcessor { 
+	OrientationAxisX: ELiveLinkAxis;
+	OrientationAxisY: ELiveLinkAxis;
+	OrientationAxisZ: ELiveLinkAxis;
+	TranslationAxisX: ELiveLinkAxis;
+	TranslationAxisY: ELiveLinkAxis;
+	TranslationAxisZ: ELiveLinkAxis;
+	FrontAxis: ELiveLinkAxis;
+	RightAxis: ELiveLinkAxis;
+	UpAxis: ELiveLinkAxis;
+	bUseOffsetPosition: boolean;
+	bUseOffsetOrientation: boolean;
+	OffsetPosition: Vector;
+	OffsetOrientation: Rotator;
+	static Load(ResourceName: string): LiveLinkTransformAxisSwitchPreProcessor;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkTransformAxisSwitchPreProcessor;
+	static GetDefaultObject(): LiveLinkTransformAxisSwitchPreProcessor;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkTransformAxisSwitchPreProcessor;
+	static C(Other: UObject | any): LiveLinkTransformAxisSwitchPreProcessor;
+}
+
+declare class LiveLinkAnimationAxisSwitchPreProcessor extends LiveLinkTransformAxisSwitchPreProcessor { 
+	static Load(ResourceName: string): LiveLinkAnimationAxisSwitchPreProcessor;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkAnimationAxisSwitchPreProcessor;
+	static GetDefaultObject(): LiveLinkAnimationAxisSwitchPreProcessor;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkAnimationAxisSwitchPreProcessor;
+	static C(Other: UObject | any): LiveLinkAnimationAxisSwitchPreProcessor;
+}
+
+declare class LiveLinkWorldTime { 
+	Time: any;
+	Offset: any;
+	clone() : LiveLinkWorldTime;
+	static C(Other: UObject | any): LiveLinkWorldTime;
+}
+
+declare class LiveLinkMetaData { 
+	StringMetadata: any;
+	SceneTime: QualifiedFrameTime;
+	clone() : LiveLinkMetaData;
+	static C(Other: UObject | any): LiveLinkMetaData;
+}
+
+declare class LiveLinkBaseFrameData { 
+	WorldTime: LiveLinkWorldTime;
+	MetaData: LiveLinkMetaData;
+	PropertyValues: number[];
+	clone() : LiveLinkBaseFrameData;
+	static C(Other: UObject | any): LiveLinkBaseFrameData;
+}
+
+declare class LiveLinkAnimationFrameData extends LiveLinkBaseFrameData { 
+	Transforms: Transform[];
+	clone() : LiveLinkAnimationFrameData;
+	static C(Other: UObject | any): LiveLinkAnimationFrameData;
+}
+
+declare class LiveLinkBaseStaticData { 
+	PropertyNames: string[];
+	clone() : LiveLinkBaseStaticData;
+	static C(Other: UObject | any): LiveLinkBaseStaticData;
+}
+
+declare class LiveLinkSkeletonStaticData extends LiveLinkBaseStaticData { 
+	BoneNames: string[];
+	BoneParents: number[];
+	clone() : LiveLinkSkeletonStaticData;
+	static C(Other: UObject | any): LiveLinkSkeletonStaticData;
+}
+
+declare class LiveLinkBasicBlueprintData extends LiveLinkBaseBlueprintData { 
+	StaticData: LiveLinkBaseStaticData;
+	FrameData: LiveLinkBaseFrameData;
+	clone() : LiveLinkBasicBlueprintData;
+	static C(Other: UObject | any): LiveLinkBasicBlueprintData;
+	GetPropertyValue(PropertyName?: string,Value?: number): {BasicData: LiveLinkBasicBlueprintData, Value: number, $: boolean};
+	static GetPropertyValue(BasicData?: LiveLinkBasicBlueprintData,PropertyName?: string,Value?: number): {BasicData: LiveLinkBasicBlueprintData, Value: number, $: boolean};
+}
+
+declare class SubjectMetadata { 
+	StringMetadata: any;
+	SceneTimecode: Timecode;
+	SceneFramerate: FrameRate;
+	clone() : SubjectMetadata;
+	static C(Other: UObject | any): SubjectMetadata;
+}
+
+declare class LiveLinkTransform { 
+	clone() : LiveLinkTransform;
+	static C(Other: UObject | any): LiveLinkTransform;
+	ChildCount(): {LiveLinkTransform: LiveLinkTransform, $: number};
+	ComponentSpaceTransform(Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
+	GetChildren(Children?: LiveLinkTransform[]): {LiveLinkTransform: LiveLinkTransform, Children: LiveLinkTransform[]};
+	GetParent(Parent?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, Parent: LiveLinkTransform};
+	HasParent(): {LiveLinkTransform: LiveLinkTransform, $: boolean};
+	ParentBoneSpaceTransform(Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
+	TransformName(Name?: string): {LiveLinkTransform: LiveLinkTransform, Name: string};
+	static ChildCount(LiveLinkTransform?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, $: number};
+	static ComponentSpaceTransform(LiveLinkTransform?: LiveLinkTransform,Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
+	static GetChildren(LiveLinkTransform?: LiveLinkTransform,Children?: LiveLinkTransform[]): {LiveLinkTransform: LiveLinkTransform, Children: LiveLinkTransform[]};
+	static GetParent(LiveLinkTransform?: LiveLinkTransform,Parent?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, Parent: LiveLinkTransform};
+	static HasParent(LiveLinkTransform?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, $: boolean};
+	static ParentBoneSpaceTransform(LiveLinkTransform?: LiveLinkTransform,Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
+	static TransformName(LiveLinkTransform?: LiveLinkTransform,Name?: string): {LiveLinkTransform: LiveLinkTransform, Name: string};
+}
+
+declare class SubjectFrameHandle extends LiveLinkBaseBlueprintData { 
+	clone() : SubjectFrameHandle;
+	static C(Other: UObject | any): SubjectFrameHandle;
+	GetAnimationFrameData(AnimationFrameData?: LiveLinkAnimationFrameData): {SubjectFrameHandle: SubjectFrameHandle, AnimationFrameData: LiveLinkAnimationFrameData, $: boolean};
+	GetAnimationStaticData(AnimationStaticData?: LiveLinkSkeletonStaticData): {SubjectFrameHandle: SubjectFrameHandle, AnimationStaticData: LiveLinkSkeletonStaticData, $: boolean};
+	GetBasicData(BasicBlueprintData?: LiveLinkBasicBlueprintData): {SubjectFrameHandle: SubjectFrameHandle, BasicBlueprintData: LiveLinkBasicBlueprintData};
+	GetCurves(Curves?: any): {SubjectFrameHandle: SubjectFrameHandle, Curves: any};
+	GetMetadata(MetaData?: SubjectMetadata): {SubjectFrameHandle: SubjectFrameHandle, MetaData: SubjectMetadata};
+	GetRootTransform(LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
+	GetTransformByIndex(TransformIndex?: number,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
+	GetTransformByName(TransformName?: string,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
+	NumberOfTransforms(): {SubjectFrameHandle: SubjectFrameHandle, $: number};
+	TransformNames(TransformNames?: string[]): {SubjectFrameHandle: SubjectFrameHandle, TransformNames: string[]};
+	static GetAnimationFrameData(SubjectFrameHandle?: SubjectFrameHandle,AnimationFrameData?: LiveLinkAnimationFrameData): {SubjectFrameHandle: SubjectFrameHandle, AnimationFrameData: LiveLinkAnimationFrameData, $: boolean};
+	static GetAnimationStaticData(SubjectFrameHandle?: SubjectFrameHandle,AnimationStaticData?: LiveLinkSkeletonStaticData): {SubjectFrameHandle: SubjectFrameHandle, AnimationStaticData: LiveLinkSkeletonStaticData, $: boolean};
+	static GetBasicData(SubjectFrameHandle?: SubjectFrameHandle,BasicBlueprintData?: LiveLinkBasicBlueprintData): {SubjectFrameHandle: SubjectFrameHandle, BasicBlueprintData: LiveLinkBasicBlueprintData};
+	static GetCurves(SubjectFrameHandle?: SubjectFrameHandle,Curves?: any): {SubjectFrameHandle: SubjectFrameHandle, Curves: any};
+	static GetMetadata(SubjectFrameHandle?: SubjectFrameHandle,MetaData?: SubjectMetadata): {SubjectFrameHandle: SubjectFrameHandle, MetaData: SubjectMetadata};
+	static GetRootTransform(SubjectFrameHandle?: SubjectFrameHandle,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
+	static GetTransformByIndex(SubjectFrameHandle?: SubjectFrameHandle,TransformIndex?: number,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
+	static GetTransformByName(SubjectFrameHandle?: SubjectFrameHandle,TransformName?: string,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
+	static NumberOfTransforms(SubjectFrameHandle?: SubjectFrameHandle): {SubjectFrameHandle: SubjectFrameHandle, $: number};
+	static TransformNames(SubjectFrameHandle?: SubjectFrameHandle,TransformNames?: string[]): {SubjectFrameHandle: SubjectFrameHandle, TransformNames: string[]};
+}
+
+declare class LiveLinkSubjectKey { 
+	Source: Guid;
+	SubjectName: LiveLinkSubjectName;
+	clone() : LiveLinkSubjectKey;
+	static C(Other: UObject | any): LiveLinkSubjectKey;
+	GetSpecificLiveLinkSubjectRole(): UnrealEngineClass;
+	IsSpecificLiveLinkSubjectEnabled(bForThisFrame: boolean): boolean;
+	SetLiveLinkSubjectEnabled(bEnabled: boolean): void;
+	static GetSpecificLiveLinkSubjectRole(SubjectKey: LiveLinkSubjectKey): UnrealEngineClass;
+	static IsSpecificLiveLinkSubjectEnabled(SubjectKey: LiveLinkSubjectKey,bForThisFrame: boolean): boolean;
+	static SetLiveLinkSubjectEnabled(SubjectKey: LiveLinkSubjectKey,bEnabled: boolean): void;
+}
+
+declare class LiveLinkSourceHandle { 
+	clone() : LiveLinkSourceHandle;
+	static C(Other: UObject | any): LiveLinkSourceHandle;
+	GetMagicLeapHandTrackingLiveLinkSource(): {SourceHandle: LiveLinkSourceHandle, $: boolean};
+	GetSourceMachineName(): {SourceHandle: LiveLinkSourceHandle, $: string};
+	GetSourceStatus(): {SourceHandle: LiveLinkSourceHandle, $: string};
+	GetSourceType(): {SourceHandle: LiveLinkSourceHandle, $: string};
+	IsSourceStillValid(): {SourceHandle: LiveLinkSourceHandle, $: boolean};
+	RemoveSource(): {SourceHandle: LiveLinkSourceHandle, $: boolean};
+	static GetMagicLeapHandTrackingLiveLinkSource(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: boolean};
+	static GetSourceMachineName(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
+	static GetSourceStatus(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
+	static GetSourceType(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
+	static IsSourceStillValid(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: boolean};
+	static RemoveSource(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: boolean};
+}
+
+declare class LiveLinkSubjectRepresentation { 
+	Subject: LiveLinkSubjectName;
+	Role: UnrealEngineClass;
+	clone() : LiveLinkSubjectRepresentation;
+	static C(Other: UObject | any): LiveLinkSubjectRepresentation;
+	EvaluateLiveLinkFrame(OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
+	static EvaluateLiveLinkFrame(SubjectRepresentation: LiveLinkSubjectRepresentation,OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
+}
+
+declare class LiveLinkBlueprintLibrary extends BlueprintFunctionLibrary { 
+	static Load(ResourceName: string): LiveLinkBlueprintLibrary;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkBlueprintLibrary;
+	static GetDefaultObject(): LiveLinkBlueprintLibrary;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkBlueprintLibrary;
+	static TransformNames(SubjectFrameHandle?: SubjectFrameHandle,TransformNames?: string[]): {SubjectFrameHandle: SubjectFrameHandle, TransformNames: string[]};
+	static TransformName(LiveLinkTransform?: LiveLinkTransform,Name?: string): {LiveLinkTransform: LiveLinkTransform, Name: string};
+	static SetLiveLinkSubjectEnabled(SubjectKey: LiveLinkSubjectKey,bEnabled: boolean): void;
+	static RemoveSource(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: boolean};
+	static ParentBoneSpaceTransform(LiveLinkTransform?: LiveLinkTransform,Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
+	static NumberOfTransforms(SubjectFrameHandle?: SubjectFrameHandle): {SubjectFrameHandle: SubjectFrameHandle, $: number};
+	static IsSpecificLiveLinkSubjectEnabled(SubjectKey: LiveLinkSubjectKey,bForThisFrame: boolean): boolean;
+	static IsSourceStillValid(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: boolean};
+	static IsLiveLinkSubjectEnabled(SubjectName: LiveLinkSubjectName): boolean;
+	static HasParent(LiveLinkTransform?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, $: boolean};
+	static GetTransformByName(SubjectFrameHandle?: SubjectFrameHandle,TransformName?: string,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
+	static GetTransformByIndex(SubjectFrameHandle?: SubjectFrameHandle,TransformIndex?: number,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
+	static GetSpecificLiveLinkSubjectRole(SubjectKey: LiveLinkSubjectKey): UnrealEngineClass;
+	static GetSourceType(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
+	static GetSourceStatus(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
+	static GetSourceMachineName(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
+	static GetRootTransform(SubjectFrameHandle?: SubjectFrameHandle,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
+	static GetPropertyValue(BasicData?: LiveLinkBasicBlueprintData,PropertyName?: string,Value?: number): {BasicData: LiveLinkBasicBlueprintData, Value: number, $: boolean};
+	static GetParent(LiveLinkTransform?: LiveLinkTransform,Parent?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, Parent: LiveLinkTransform};
+	static GetMetadata(SubjectFrameHandle?: SubjectFrameHandle,MetaData?: SubjectMetadata): {SubjectFrameHandle: SubjectFrameHandle, MetaData: SubjectMetadata};
+	static GetLiveLinkSubjects(bIncludeDisabledSubject: boolean,bIncludeVirtualSubject: boolean): LiveLinkSubjectKey[];
+	static GetLiveLinkSubjectRole(SubjectName: LiveLinkSubjectName): UnrealEngineClass;
+	static GetLiveLinkEnabledSubjectNames(bIncludeVirtualSubject: boolean): LiveLinkSubjectName[];
+	static GetCurves(SubjectFrameHandle?: SubjectFrameHandle,Curves?: any): {SubjectFrameHandle: SubjectFrameHandle, Curves: any};
+	static GetChildren(LiveLinkTransform?: LiveLinkTransform,Children?: LiveLinkTransform[]): {LiveLinkTransform: LiveLinkTransform, Children: LiveLinkTransform[]};
+	static GetBasicData(SubjectFrameHandle?: SubjectFrameHandle,BasicBlueprintData?: LiveLinkBasicBlueprintData): {SubjectFrameHandle: SubjectFrameHandle, BasicBlueprintData: LiveLinkBasicBlueprintData};
+	static GetAnimationStaticData(SubjectFrameHandle?: SubjectFrameHandle,AnimationStaticData?: LiveLinkSkeletonStaticData): {SubjectFrameHandle: SubjectFrameHandle, AnimationStaticData: LiveLinkSkeletonStaticData, $: boolean};
+	static GetAnimationFrameData(SubjectFrameHandle?: SubjectFrameHandle,AnimationFrameData?: LiveLinkAnimationFrameData): {SubjectFrameHandle: SubjectFrameHandle, AnimationFrameData: LiveLinkAnimationFrameData, $: boolean};
+	static EvaluateLiveLinkFrameWithSpecificRole(SubjectName: LiveLinkSubjectName,Role: UnrealEngineClass,OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
+	static EvaluateLiveLinkFrameAtWorldTimeOffset(SubjectName: LiveLinkSubjectName,Role: UnrealEngineClass,WorldTimeOffset: number,OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
+	static EvaluateLiveLinkFrameAtSceneTime(SubjectName: LiveLinkSubjectName,Role: UnrealEngineClass,SceneTime: Timecode,OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
+	static EvaluateLiveLinkFrame(SubjectRepresentation: LiveLinkSubjectRepresentation,OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
+	static ComponentSpaceTransform(LiveLinkTransform?: LiveLinkTransform,Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
+	static ChildCount(LiveLinkTransform?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, $: number};
+	static C(Other: UObject | any): LiveLinkBlueprintLibrary;
+}
+
+declare class LiveLinkBlueprintVirtualSubject extends LiveLinkVirtualSubject { 
+	static Load(ResourceName: string): LiveLinkBlueprintVirtualSubject;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkBlueprintVirtualSubject;
+	static GetDefaultObject(): LiveLinkBlueprintVirtualSubject;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkBlueprintVirtualSubject;
+	UpdateVirtualSubjectStaticData_Internal(InStruct: LiveLinkBaseStaticData): boolean;
+	UpdateVirtualSubjectFrameData_Internal(InStruct: LiveLinkBaseFrameData,bInShouldStampCurrentTime: boolean): boolean;
+	OnUpdate(): void;
+	OnInitialize(): void;
+	static C(Other: UObject | any): LiveLinkBlueprintVirtualSubject;
+}
+
+declare class LiveLinkComponent extends ActorComponent { 
+	OnLiveLinkUpdated: UnrealEngineMulticastDelegate<(DeltaTime: number) => void>;
+	static Load(ResourceName: string): LiveLinkComponent;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkComponent;
+	static GetDefaultObject(): LiveLinkComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkComponent;
+	GetSubjectDataAtWorldTime(SubjectName: string,WorldTime: number,bSuccess?: boolean,SubjectFrameHandle?: SubjectFrameHandle): {bSuccess: boolean, SubjectFrameHandle: SubjectFrameHandle};
+	GetSubjectDataAtSceneTime(SubjectName: string,SceneTime: Timecode,bSuccess?: boolean,SubjectFrameHandle?: SubjectFrameHandle): {bSuccess: boolean, SubjectFrameHandle: SubjectFrameHandle};
+	GetSubjectData(SubjectName: string,bSuccess?: boolean,SubjectFrameHandle?: SubjectFrameHandle): {bSuccess: boolean, SubjectFrameHandle: SubjectFrameHandle};
+	GetAvailableSubjectNames(SubjectNames?: string[]): {SubjectNames: string[]};
+	static C(Other: UObject | any): LiveLinkComponent;
+}
+
+declare class LiveLinkDrivenComponent extends ActorComponent { 
+	SubjectName: LiveLinkSubjectName;
+	ActorTransformBone: string;
+	bModifyActorTransform: boolean;
+	bSetRelativeLocation: boolean;
+	static Load(ResourceName: string): LiveLinkDrivenComponent;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkDrivenComponent;
+	static GetDefaultObject(): LiveLinkDrivenComponent;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkDrivenComponent;
+	static C(Other: UObject | any): LiveLinkDrivenComponent;
+}
+
+declare class LiveLinkRetargetAsset extends UObject { 
+	static Load(ResourceName: string): LiveLinkRetargetAsset;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkRetargetAsset;
+	static GetDefaultObject(): LiveLinkRetargetAsset;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkRetargetAsset;
+	static C(Other: UObject | any): LiveLinkRetargetAsset;
+}
+
+declare class LiveLinkInstance extends AnimInstance { 
+	CurrentRetargetAsset: LiveLinkRetargetAsset;
+	static Load(ResourceName: string): LiveLinkInstance;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkInstance;
+	static GetDefaultObject(): LiveLinkInstance;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkInstance;
+	SetSubject(SubjectName: LiveLinkSubjectName): void;
+	SetRetargetAsset(RetargetAsset: UnrealEngineClass): void;
+	static C(Other: UObject | any): LiveLinkInstance;
+}
+
+declare class ProviderPollResult { 
+	Name: string;
+	MachineName: string;
+	MachineTimeOffset: any;
+	clone() : ProviderPollResult;
+	static C(Other: UObject | any): ProviderPollResult;
+}
+
+declare class LiveLinkMessageBusFinder extends UObject { 
+	static Load(ResourceName: string): LiveLinkMessageBusFinder;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkMessageBusFinder;
+	static GetDefaultObject(): LiveLinkMessageBusFinder;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkMessageBusFinder;
+	GetAvailableProviders(WorldContextObject: UObject,LatentInfo: LatentActionInfo,Duration: number,AvailableProviders?: ProviderPollResult[]): {AvailableProviders: ProviderPollResult[]};
+	static ConstructMessageBusFinder(): LiveLinkMessageBusFinder;
+	static ConnectToProvider(Provider?: ProviderPollResult,SourceHandle?: LiveLinkSourceHandle): {Provider: ProviderPollResult, SourceHandle: LiveLinkSourceHandle};
+	static C(Other: UObject | any): LiveLinkMessageBusFinder;
+}
+
+declare class LiveLinkMessageBusSourceFactory extends LiveLinkSourceFactory { 
+	static Load(ResourceName: string): LiveLinkMessageBusSourceFactory;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkMessageBusSourceFactory;
+	static GetDefaultObject(): LiveLinkMessageBusSourceFactory;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkMessageBusSourceFactory;
+	static C(Other: UObject | any): LiveLinkMessageBusSourceFactory;
+}
+
+declare class LiveLinkMessageBusSourceSettings extends LiveLinkSourceSettings { 
+	static Load(ResourceName: string): LiveLinkMessageBusSourceSettings;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkMessageBusSourceSettings;
+	static GetDefaultObject(): LiveLinkMessageBusSourceSettings;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkMessageBusSourceSettings;
+	static C(Other: UObject | any): LiveLinkMessageBusSourceSettings;
+}
+
+declare class LiveLinkSourcePreset { 
+	Guid: Guid;
+	Settings: LiveLinkSourceSettings;
+	SourceType: string;
+	clone() : LiveLinkSourcePreset;
+	static C(Other: UObject | any): LiveLinkSourcePreset;
+}
+
+declare class LiveLinkSubjectPreset { 
+	Key: LiveLinkSubjectKey;
+	Role: UnrealEngineClass;
+	Settings: LiveLinkSubjectSettings;
+	VirtualSubject: LiveLinkVirtualSubject;
+	bEnabled: boolean;
+	clone() : LiveLinkSubjectPreset;
+	static C(Other: UObject | any): LiveLinkSubjectPreset;
+}
+
+declare class LiveLinkPreset extends UObject { 
+	Sources: LiveLinkSourcePreset[];
+	Subjects: LiveLinkSubjectPreset[];
+	static Load(ResourceName: string): LiveLinkPreset;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkPreset;
+	static GetDefaultObject(): LiveLinkPreset;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkPreset;
+	BuildFromClient(): void;
+	ApplyToClient(): boolean;
+	AddToClient(bRecreatePresets: boolean): boolean;
+	static C(Other: UObject | any): LiveLinkPreset;
+}
+
+declare class LiveLinkRemapAsset extends LiveLinkRetargetAsset { 
+	static Load(ResourceName: string): LiveLinkRemapAsset;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkRemapAsset;
+	static GetDefaultObject(): LiveLinkRemapAsset;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkRemapAsset;
+	RemapCurveElements(CurveItems?: any): {CurveItems: any};
+	GetRemappedCurveName(CurveName: string): string;
+	GetRemappedBoneName(BoneName: string): string;
+	static C(Other: UObject | any): LiveLinkRemapAsset;
+}
+
+declare class LiveLinkRoleProjectSetting { 
+	Role: UnrealEngineClass;
+	SettingClass: UnrealEngineClass;
+	FrameInterpolationProcessor: UnrealEngineClass;
+	FramePreProcessors: UnrealEngineClass[];
+	clone() : LiveLinkRoleProjectSetting;
+	static C(Other: UObject | any): LiveLinkRoleProjectSetting;
+}
+
+declare class LiveLinkSettings extends UObject { 
+	DefaultRoleSettings: LiveLinkRoleProjectSetting[];
+	FrameInterpolationProcessor: UnrealEngineClass;
+	DefaultLiveLinkPreset: LiveLinkPreset;
+	PresetSaveDir: DirectoryPath;
+	ClockOffsetCorrectionStep: number;
+	DefaultMessageBusSourceMode: ELiveLinkSourceMode;
+	MessageBusPingRequestFrequency: any;
+	MessageBusHeartbeatFrequency: any;
+	MessageBusHeartbeatTimeout: any;
+	MessageBusTimeBeforeRemovingInactiveSource: any;
+	TimeWithoutFrameToBeConsiderAsInvalid: any;
+	ValidColor: LinearColor;
+	InvalidColor: LinearColor;
+	TextSizeSource: number;
+	TextSizeSubject: number;
+	static Load(ResourceName: string): LiveLinkSettings;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkSettings;
+	static GetDefaultObject(): LiveLinkSettings;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkSettings;
+	static C(Other: UObject | any): LiveLinkSettings;
+}
+
+declare type ELiveLinkTimecodeProviderEvaluationType = 'Lerp' | 'Nearest' | 'Latest' | 'ELiveLinkTimecodeProviderEvaluationType_MAX';
+declare var ELiveLinkTimecodeProviderEvaluationType : { Lerp:'Lerp',Nearest:'Nearest',Latest:'Latest',ELiveLinkTimecodeProviderEvaluationType_MAX:'ELiveLinkTimecodeProviderEvaluationType_MAX', };
+declare class LiveLinkTimecodeProvider extends TimecodeProvider { 
+	SubjectKey: LiveLinkSubjectKey;
+	Evaluation: ELiveLinkTimecodeProviderEvaluationType;
+	bOverrideFrameRate: boolean;
+	OverrideFrameRate: FrameRate;
+	BufferSize: number;
+	static Load(ResourceName: string): LiveLinkTimecodeProvider;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkTimecodeProvider;
+	static GetDefaultObject(): LiveLinkTimecodeProvider;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkTimecodeProvider;
+	static C(Other: UObject | any): LiveLinkTimecodeProvider;
+}
+
+declare class LiveLinkTimeSynchronizationSource extends TimeSynchronizationSource { 
+	SubjectName: LiveLinkSubjectName;
+	static Load(ResourceName: string): LiveLinkTimeSynchronizationSource;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkTimeSynchronizationSource;
+	static GetDefaultObject(): LiveLinkTimeSynchronizationSource;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkTimeSynchronizationSource;
+	static C(Other: UObject | any): LiveLinkTimeSynchronizationSource;
+}
+
+declare class LiveLinkVirtualSubjectSourceSettings extends LiveLinkSourceSettings { 
+	SourceName: string;
+	static Load(ResourceName: string): LiveLinkVirtualSubjectSourceSettings;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkVirtualSubjectSourceSettings;
+	static GetDefaultObject(): LiveLinkVirtualSubjectSourceSettings;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkVirtualSubjectSourceSettings;
+	static C(Other: UObject | any): LiveLinkVirtualSubjectSourceSettings;
+}
+
+declare class LiveLinkOpenXRHandTrackingSourceFactory extends LiveLinkSourceFactory { 
+	static Load(ResourceName: string): LiveLinkOpenXRHandTrackingSourceFactory;
+	static Find(Outer: UObject, ResourceName: string): LiveLinkOpenXRHandTrackingSourceFactory;
+	static GetDefaultObject(): LiveLinkOpenXRHandTrackingSourceFactory;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkOpenXRHandTrackingSourceFactory;
+	static C(Other: UObject | any): LiveLinkOpenXRHandTrackingSourceFactory;
+}
+
+declare type EQuatSwizzleAxisB = 'X' | 'Y' | 'Z' | 'W' | 'MinusX' | 'MinusY' | 'MinusZ' | 'MinusW' | 'EQuatSwizzleAxisB_MAX';
+declare var EQuatSwizzleAxisB : { X:'X',Y:'Y',Z:'Z',W:'W',MinusX:'MinusX',MinusY:'MinusY',MinusZ:'MinusZ',MinusW:'MinusW',EQuatSwizzleAxisB_MAX:'EQuatSwizzleAxisB_MAX', };
+declare class OpenXRHandTrackingLiveLinkRemapAsset extends LiveLinkRetargetAsset { 
+	bHasMetacarpals: boolean;
+	bRetargetRotationOnly: boolean;
+	SwizzleX: EQuatSwizzleAxisB;
+	SwizzleY: EQuatSwizzleAxisB;
+	SwizzleZ: EQuatSwizzleAxisB;
+	SwizzleW: EQuatSwizzleAxisB;
+	HandTrackingBoneNameMap: any;
+	static Load(ResourceName: string): OpenXRHandTrackingLiveLinkRemapAsset;
+	static Find(Outer: UObject, ResourceName: string): OpenXRHandTrackingLiveLinkRemapAsset;
+	static GetDefaultObject(): OpenXRHandTrackingLiveLinkRemapAsset;
+	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): OpenXRHandTrackingLiveLinkRemapAsset;
+	static C(Other: UObject | any): OpenXRHandTrackingLiveLinkRemapAsset;
+}
+
 declare class NamedInterface { 
 	InterfaceName: string;
 	InterfaceObject: UObject;
@@ -17331,515 +17840,6 @@ declare class K2Node_LeaderboardQuery extends K2Node_BaseAsyncTask {
 	static GetDefaultObject(): K2Node_LeaderboardQuery;
 	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): K2Node_LeaderboardQuery;
 	static C(Other: UObject | any): K2Node_LeaderboardQuery;
-}
-
-declare class EyeTrackerStereoGazeData { 
-	LeftEyeOrigin: Vector;
-	LeftEyeDirection: Vector;
-	RightEyeOrigin: Vector;
-	RightEyeDirection: Vector;
-	FixationPoint: Vector;
-	ConfidenceValue: number;
-	clone() : EyeTrackerStereoGazeData;
-	static C(Other: UObject | any): EyeTrackerStereoGazeData;
-	GetStereoGazeData(): {OutGazeData: EyeTrackerStereoGazeData, $: boolean};
-	static GetStereoGazeData(OutGazeData?: EyeTrackerStereoGazeData): {OutGazeData: EyeTrackerStereoGazeData, $: boolean};
-}
-
-declare class EyeTrackerGazeData { 
-	GazeOrigin: Vector;
-	GazeDirection: Vector;
-	FixationPoint: Vector;
-	ConfidenceValue: number;
-	clone() : EyeTrackerGazeData;
-	static C(Other: UObject | any): EyeTrackerGazeData;
-	GetGazeData(): {OutGazeData: EyeTrackerGazeData, $: boolean};
-	static GetGazeData(OutGazeData?: EyeTrackerGazeData): {OutGazeData: EyeTrackerGazeData, $: boolean};
-}
-
-declare class EyeTrackerFunctionLibrary extends BlueprintFunctionLibrary { 
-	static Load(ResourceName: string): EyeTrackerFunctionLibrary;
-	static Find(Outer: UObject, ResourceName: string): EyeTrackerFunctionLibrary;
-	static GetDefaultObject(): EyeTrackerFunctionLibrary;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): EyeTrackerFunctionLibrary;
-	static SetEyeTrackedPlayer(PlayerController: PlayerController): void;
-	static IsStereoGazeDataAvailable(): boolean;
-	static IsEyeTrackerConnected(): boolean;
-	static GetStereoGazeData(OutGazeData?: EyeTrackerStereoGazeData): {OutGazeData: EyeTrackerStereoGazeData, $: boolean};
-	static GetGazeData(OutGazeData?: EyeTrackerGazeData): {OutGazeData: EyeTrackerGazeData, $: boolean};
-	static C(Other: UObject | any): EyeTrackerFunctionLibrary;
-}
-
-declare class LiveLinkBasicFrameInterpolationProcessor extends LiveLinkFrameInterpolationProcessor { 
-	bInterpolatePropertyValues: boolean;
-	static Load(ResourceName: string): LiveLinkBasicFrameInterpolationProcessor;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkBasicFrameInterpolationProcessor;
-	static GetDefaultObject(): LiveLinkBasicFrameInterpolationProcessor;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkBasicFrameInterpolationProcessor;
-	static C(Other: UObject | any): LiveLinkBasicFrameInterpolationProcessor;
-}
-
-declare class LiveLinkAnimationFrameInterpolationProcessor extends LiveLinkBasicFrameInterpolationProcessor { 
-	static Load(ResourceName: string): LiveLinkAnimationFrameInterpolationProcessor;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkAnimationFrameInterpolationProcessor;
-	static GetDefaultObject(): LiveLinkAnimationFrameInterpolationProcessor;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkAnimationFrameInterpolationProcessor;
-	static C(Other: UObject | any): LiveLinkAnimationFrameInterpolationProcessor;
-}
-
-declare class LiveLinkAnimationRoleToTransform extends LiveLinkFrameTranslator { 
-	BoneName: string;
-	static Load(ResourceName: string): LiveLinkAnimationRoleToTransform;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkAnimationRoleToTransform;
-	static GetDefaultObject(): LiveLinkAnimationRoleToTransform;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkAnimationRoleToTransform;
-	static C(Other: UObject | any): LiveLinkAnimationRoleToTransform;
-}
-
-declare class LiveLinkAnimationVirtualSubject extends LiveLinkVirtualSubject { 
-	bAppendSubjectNameToBones: boolean;
-	static Load(ResourceName: string): LiveLinkAnimationVirtualSubject;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkAnimationVirtualSubject;
-	static GetDefaultObject(): LiveLinkAnimationVirtualSubject;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkAnimationVirtualSubject;
-	static C(Other: UObject | any): LiveLinkAnimationVirtualSubject;
-}
-
-declare type ELiveLinkAxis = 'X' | 'Y' | 'Z' | 'XNeg' | 'YNeg' | 'ZNeg' | 'ELiveLinkAxis_MAX';
-declare var ELiveLinkAxis : { X:'X',Y:'Y',Z:'Z',XNeg:'XNeg',YNeg:'YNeg',ZNeg:'ZNeg',ELiveLinkAxis_MAX:'ELiveLinkAxis_MAX', };
-declare class LiveLinkTransformAxisSwitchPreProcessor extends LiveLinkFramePreProcessor { 
-	OrientationAxisX: ELiveLinkAxis;
-	OrientationAxisY: ELiveLinkAxis;
-	OrientationAxisZ: ELiveLinkAxis;
-	TranslationAxisX: ELiveLinkAxis;
-	TranslationAxisY: ELiveLinkAxis;
-	TranslationAxisZ: ELiveLinkAxis;
-	FrontAxis: ELiveLinkAxis;
-	RightAxis: ELiveLinkAxis;
-	UpAxis: ELiveLinkAxis;
-	bUseOffsetPosition: boolean;
-	bUseOffsetOrientation: boolean;
-	OffsetPosition: Vector;
-	OffsetOrientation: Rotator;
-	static Load(ResourceName: string): LiveLinkTransformAxisSwitchPreProcessor;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkTransformAxisSwitchPreProcessor;
-	static GetDefaultObject(): LiveLinkTransformAxisSwitchPreProcessor;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkTransformAxisSwitchPreProcessor;
-	static C(Other: UObject | any): LiveLinkTransformAxisSwitchPreProcessor;
-}
-
-declare class LiveLinkAnimationAxisSwitchPreProcessor extends LiveLinkTransformAxisSwitchPreProcessor { 
-	static Load(ResourceName: string): LiveLinkAnimationAxisSwitchPreProcessor;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkAnimationAxisSwitchPreProcessor;
-	static GetDefaultObject(): LiveLinkAnimationAxisSwitchPreProcessor;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkAnimationAxisSwitchPreProcessor;
-	static C(Other: UObject | any): LiveLinkAnimationAxisSwitchPreProcessor;
-}
-
-declare class LiveLinkWorldTime { 
-	Time: any;
-	Offset: any;
-	clone() : LiveLinkWorldTime;
-	static C(Other: UObject | any): LiveLinkWorldTime;
-}
-
-declare class LiveLinkMetaData { 
-	StringMetadata: any;
-	SceneTime: QualifiedFrameTime;
-	clone() : LiveLinkMetaData;
-	static C(Other: UObject | any): LiveLinkMetaData;
-}
-
-declare class LiveLinkBaseFrameData { 
-	WorldTime: LiveLinkWorldTime;
-	MetaData: LiveLinkMetaData;
-	PropertyValues: number[];
-	clone() : LiveLinkBaseFrameData;
-	static C(Other: UObject | any): LiveLinkBaseFrameData;
-}
-
-declare class LiveLinkAnimationFrameData extends LiveLinkBaseFrameData { 
-	Transforms: Transform[];
-	clone() : LiveLinkAnimationFrameData;
-	static C(Other: UObject | any): LiveLinkAnimationFrameData;
-}
-
-declare class LiveLinkBaseStaticData { 
-	PropertyNames: string[];
-	clone() : LiveLinkBaseStaticData;
-	static C(Other: UObject | any): LiveLinkBaseStaticData;
-}
-
-declare class LiveLinkSkeletonStaticData extends LiveLinkBaseStaticData { 
-	BoneNames: string[];
-	BoneParents: number[];
-	clone() : LiveLinkSkeletonStaticData;
-	static C(Other: UObject | any): LiveLinkSkeletonStaticData;
-}
-
-declare class LiveLinkBasicBlueprintData extends LiveLinkBaseBlueprintData { 
-	StaticData: LiveLinkBaseStaticData;
-	FrameData: LiveLinkBaseFrameData;
-	clone() : LiveLinkBasicBlueprintData;
-	static C(Other: UObject | any): LiveLinkBasicBlueprintData;
-	GetPropertyValue(PropertyName?: string,Value?: number): {BasicData: LiveLinkBasicBlueprintData, Value: number, $: boolean};
-	static GetPropertyValue(BasicData?: LiveLinkBasicBlueprintData,PropertyName?: string,Value?: number): {BasicData: LiveLinkBasicBlueprintData, Value: number, $: boolean};
-}
-
-declare class SubjectMetadata { 
-	StringMetadata: any;
-	SceneTimecode: Timecode;
-	SceneFramerate: FrameRate;
-	clone() : SubjectMetadata;
-	static C(Other: UObject | any): SubjectMetadata;
-}
-
-declare class LiveLinkTransform { 
-	clone() : LiveLinkTransform;
-	static C(Other: UObject | any): LiveLinkTransform;
-	ChildCount(): {LiveLinkTransform: LiveLinkTransform, $: number};
-	ComponentSpaceTransform(Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
-	GetChildren(Children?: LiveLinkTransform[]): {LiveLinkTransform: LiveLinkTransform, Children: LiveLinkTransform[]};
-	GetParent(Parent?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, Parent: LiveLinkTransform};
-	HasParent(): {LiveLinkTransform: LiveLinkTransform, $: boolean};
-	ParentBoneSpaceTransform(Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
-	TransformName(Name?: string): {LiveLinkTransform: LiveLinkTransform, Name: string};
-	static ChildCount(LiveLinkTransform?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, $: number};
-	static ComponentSpaceTransform(LiveLinkTransform?: LiveLinkTransform,Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
-	static GetChildren(LiveLinkTransform?: LiveLinkTransform,Children?: LiveLinkTransform[]): {LiveLinkTransform: LiveLinkTransform, Children: LiveLinkTransform[]};
-	static GetParent(LiveLinkTransform?: LiveLinkTransform,Parent?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, Parent: LiveLinkTransform};
-	static HasParent(LiveLinkTransform?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, $: boolean};
-	static ParentBoneSpaceTransform(LiveLinkTransform?: LiveLinkTransform,Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
-	static TransformName(LiveLinkTransform?: LiveLinkTransform,Name?: string): {LiveLinkTransform: LiveLinkTransform, Name: string};
-}
-
-declare class SubjectFrameHandle extends LiveLinkBaseBlueprintData { 
-	clone() : SubjectFrameHandle;
-	static C(Other: UObject | any): SubjectFrameHandle;
-	GetAnimationFrameData(AnimationFrameData?: LiveLinkAnimationFrameData): {SubjectFrameHandle: SubjectFrameHandle, AnimationFrameData: LiveLinkAnimationFrameData, $: boolean};
-	GetAnimationStaticData(AnimationStaticData?: LiveLinkSkeletonStaticData): {SubjectFrameHandle: SubjectFrameHandle, AnimationStaticData: LiveLinkSkeletonStaticData, $: boolean};
-	GetBasicData(BasicBlueprintData?: LiveLinkBasicBlueprintData): {SubjectFrameHandle: SubjectFrameHandle, BasicBlueprintData: LiveLinkBasicBlueprintData};
-	GetCurves(Curves?: any): {SubjectFrameHandle: SubjectFrameHandle, Curves: any};
-	GetMetadata(MetaData?: SubjectMetadata): {SubjectFrameHandle: SubjectFrameHandle, MetaData: SubjectMetadata};
-	GetRootTransform(LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
-	GetTransformByIndex(TransformIndex?: number,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
-	GetTransformByName(TransformName?: string,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
-	NumberOfTransforms(): {SubjectFrameHandle: SubjectFrameHandle, $: number};
-	TransformNames(TransformNames?: string[]): {SubjectFrameHandle: SubjectFrameHandle, TransformNames: string[]};
-	static GetAnimationFrameData(SubjectFrameHandle?: SubjectFrameHandle,AnimationFrameData?: LiveLinkAnimationFrameData): {SubjectFrameHandle: SubjectFrameHandle, AnimationFrameData: LiveLinkAnimationFrameData, $: boolean};
-	static GetAnimationStaticData(SubjectFrameHandle?: SubjectFrameHandle,AnimationStaticData?: LiveLinkSkeletonStaticData): {SubjectFrameHandle: SubjectFrameHandle, AnimationStaticData: LiveLinkSkeletonStaticData, $: boolean};
-	static GetBasicData(SubjectFrameHandle?: SubjectFrameHandle,BasicBlueprintData?: LiveLinkBasicBlueprintData): {SubjectFrameHandle: SubjectFrameHandle, BasicBlueprintData: LiveLinkBasicBlueprintData};
-	static GetCurves(SubjectFrameHandle?: SubjectFrameHandle,Curves?: any): {SubjectFrameHandle: SubjectFrameHandle, Curves: any};
-	static GetMetadata(SubjectFrameHandle?: SubjectFrameHandle,MetaData?: SubjectMetadata): {SubjectFrameHandle: SubjectFrameHandle, MetaData: SubjectMetadata};
-	static GetRootTransform(SubjectFrameHandle?: SubjectFrameHandle,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
-	static GetTransformByIndex(SubjectFrameHandle?: SubjectFrameHandle,TransformIndex?: number,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
-	static GetTransformByName(SubjectFrameHandle?: SubjectFrameHandle,TransformName?: string,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
-	static NumberOfTransforms(SubjectFrameHandle?: SubjectFrameHandle): {SubjectFrameHandle: SubjectFrameHandle, $: number};
-	static TransformNames(SubjectFrameHandle?: SubjectFrameHandle,TransformNames?: string[]): {SubjectFrameHandle: SubjectFrameHandle, TransformNames: string[]};
-}
-
-declare class LiveLinkSubjectKey { 
-	Source: Guid;
-	SubjectName: LiveLinkSubjectName;
-	clone() : LiveLinkSubjectKey;
-	static C(Other: UObject | any): LiveLinkSubjectKey;
-	GetSpecificLiveLinkSubjectRole(): UnrealEngineClass;
-	IsSpecificLiveLinkSubjectEnabled(bForThisFrame: boolean): boolean;
-	SetLiveLinkSubjectEnabled(bEnabled: boolean): void;
-	static GetSpecificLiveLinkSubjectRole(SubjectKey: LiveLinkSubjectKey): UnrealEngineClass;
-	static IsSpecificLiveLinkSubjectEnabled(SubjectKey: LiveLinkSubjectKey,bForThisFrame: boolean): boolean;
-	static SetLiveLinkSubjectEnabled(SubjectKey: LiveLinkSubjectKey,bEnabled: boolean): void;
-}
-
-declare class LiveLinkSourceHandle { 
-	clone() : LiveLinkSourceHandle;
-	static C(Other: UObject | any): LiveLinkSourceHandle;
-	GetMagicLeapHandTrackingLiveLinkSource(): {SourceHandle: LiveLinkSourceHandle, $: boolean};
-	GetSourceMachineName(): {SourceHandle: LiveLinkSourceHandle, $: string};
-	GetSourceStatus(): {SourceHandle: LiveLinkSourceHandle, $: string};
-	GetSourceType(): {SourceHandle: LiveLinkSourceHandle, $: string};
-	IsSourceStillValid(): {SourceHandle: LiveLinkSourceHandle, $: boolean};
-	RemoveSource(): {SourceHandle: LiveLinkSourceHandle, $: boolean};
-	static GetMagicLeapHandTrackingLiveLinkSource(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: boolean};
-	static GetSourceMachineName(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
-	static GetSourceStatus(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
-	static GetSourceType(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
-	static IsSourceStillValid(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: boolean};
-	static RemoveSource(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: boolean};
-}
-
-declare class LiveLinkSubjectRepresentation { 
-	Subject: LiveLinkSubjectName;
-	Role: UnrealEngineClass;
-	clone() : LiveLinkSubjectRepresentation;
-	static C(Other: UObject | any): LiveLinkSubjectRepresentation;
-	EvaluateLiveLinkFrame(OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
-	static EvaluateLiveLinkFrame(SubjectRepresentation: LiveLinkSubjectRepresentation,OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
-}
-
-declare class LiveLinkBlueprintLibrary extends BlueprintFunctionLibrary { 
-	static Load(ResourceName: string): LiveLinkBlueprintLibrary;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkBlueprintLibrary;
-	static GetDefaultObject(): LiveLinkBlueprintLibrary;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkBlueprintLibrary;
-	static TransformNames(SubjectFrameHandle?: SubjectFrameHandle,TransformNames?: string[]): {SubjectFrameHandle: SubjectFrameHandle, TransformNames: string[]};
-	static TransformName(LiveLinkTransform?: LiveLinkTransform,Name?: string): {LiveLinkTransform: LiveLinkTransform, Name: string};
-	static SetLiveLinkSubjectEnabled(SubjectKey: LiveLinkSubjectKey,bEnabled: boolean): void;
-	static RemoveSource(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: boolean};
-	static ParentBoneSpaceTransform(LiveLinkTransform?: LiveLinkTransform,Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
-	static NumberOfTransforms(SubjectFrameHandle?: SubjectFrameHandle): {SubjectFrameHandle: SubjectFrameHandle, $: number};
-	static IsSpecificLiveLinkSubjectEnabled(SubjectKey: LiveLinkSubjectKey,bForThisFrame: boolean): boolean;
-	static IsSourceStillValid(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: boolean};
-	static IsLiveLinkSubjectEnabled(SubjectName: LiveLinkSubjectName): boolean;
-	static HasParent(LiveLinkTransform?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, $: boolean};
-	static GetTransformByName(SubjectFrameHandle?: SubjectFrameHandle,TransformName?: string,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
-	static GetTransformByIndex(SubjectFrameHandle?: SubjectFrameHandle,TransformIndex?: number,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
-	static GetSpecificLiveLinkSubjectRole(SubjectKey: LiveLinkSubjectKey): UnrealEngineClass;
-	static GetSourceType(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
-	static GetSourceStatus(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
-	static GetSourceMachineName(SourceHandle?: LiveLinkSourceHandle): {SourceHandle: LiveLinkSourceHandle, $: string};
-	static GetRootTransform(SubjectFrameHandle?: SubjectFrameHandle,LiveLinkTransform?: LiveLinkTransform): {SubjectFrameHandle: SubjectFrameHandle, LiveLinkTransform: LiveLinkTransform};
-	static GetPropertyValue(BasicData?: LiveLinkBasicBlueprintData,PropertyName?: string,Value?: number): {BasicData: LiveLinkBasicBlueprintData, Value: number, $: boolean};
-	static GetParent(LiveLinkTransform?: LiveLinkTransform,Parent?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, Parent: LiveLinkTransform};
-	static GetMetadata(SubjectFrameHandle?: SubjectFrameHandle,MetaData?: SubjectMetadata): {SubjectFrameHandle: SubjectFrameHandle, MetaData: SubjectMetadata};
-	static GetLiveLinkSubjects(bIncludeDisabledSubject: boolean,bIncludeVirtualSubject: boolean): LiveLinkSubjectKey[];
-	static GetLiveLinkSubjectRole(SubjectName: LiveLinkSubjectName): UnrealEngineClass;
-	static GetLiveLinkEnabledSubjectNames(bIncludeVirtualSubject: boolean): LiveLinkSubjectName[];
-	static GetCurves(SubjectFrameHandle?: SubjectFrameHandle,Curves?: any): {SubjectFrameHandle: SubjectFrameHandle, Curves: any};
-	static GetChildren(LiveLinkTransform?: LiveLinkTransform,Children?: LiveLinkTransform[]): {LiveLinkTransform: LiveLinkTransform, Children: LiveLinkTransform[]};
-	static GetBasicData(SubjectFrameHandle?: SubjectFrameHandle,BasicBlueprintData?: LiveLinkBasicBlueprintData): {SubjectFrameHandle: SubjectFrameHandle, BasicBlueprintData: LiveLinkBasicBlueprintData};
-	static GetAnimationStaticData(SubjectFrameHandle?: SubjectFrameHandle,AnimationStaticData?: LiveLinkSkeletonStaticData): {SubjectFrameHandle: SubjectFrameHandle, AnimationStaticData: LiveLinkSkeletonStaticData, $: boolean};
-	static GetAnimationFrameData(SubjectFrameHandle?: SubjectFrameHandle,AnimationFrameData?: LiveLinkAnimationFrameData): {SubjectFrameHandle: SubjectFrameHandle, AnimationFrameData: LiveLinkAnimationFrameData, $: boolean};
-	static EvaluateLiveLinkFrameWithSpecificRole(SubjectName: LiveLinkSubjectName,Role: UnrealEngineClass,OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
-	static EvaluateLiveLinkFrameAtWorldTimeOffset(SubjectName: LiveLinkSubjectName,Role: UnrealEngineClass,WorldTimeOffset: number,OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
-	static EvaluateLiveLinkFrameAtSceneTime(SubjectName: LiveLinkSubjectName,Role: UnrealEngineClass,SceneTime: Timecode,OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
-	static EvaluateLiveLinkFrame(SubjectRepresentation: LiveLinkSubjectRepresentation,OutBlueprintData?: LiveLinkBaseBlueprintData): {OutBlueprintData: LiveLinkBaseBlueprintData, $: boolean};
-	static ComponentSpaceTransform(LiveLinkTransform?: LiveLinkTransform,Transform?: Transform): {LiveLinkTransform: LiveLinkTransform, Transform: Transform};
-	static ChildCount(LiveLinkTransform?: LiveLinkTransform): {LiveLinkTransform: LiveLinkTransform, $: number};
-	static C(Other: UObject | any): LiveLinkBlueprintLibrary;
-}
-
-declare class LiveLinkBlueprintVirtualSubject extends LiveLinkVirtualSubject { 
-	static Load(ResourceName: string): LiveLinkBlueprintVirtualSubject;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkBlueprintVirtualSubject;
-	static GetDefaultObject(): LiveLinkBlueprintVirtualSubject;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkBlueprintVirtualSubject;
-	UpdateVirtualSubjectStaticData_Internal(InStruct: LiveLinkBaseStaticData): boolean;
-	UpdateVirtualSubjectFrameData_Internal(InStruct: LiveLinkBaseFrameData,bInShouldStampCurrentTime: boolean): boolean;
-	OnUpdate(): void;
-	OnInitialize(): void;
-	static C(Other: UObject | any): LiveLinkBlueprintVirtualSubject;
-}
-
-declare class LiveLinkComponent extends ActorComponent { 
-	OnLiveLinkUpdated: UnrealEngineMulticastDelegate<(DeltaTime: number) => void>;
-	static Load(ResourceName: string): LiveLinkComponent;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkComponent;
-	static GetDefaultObject(): LiveLinkComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkComponent;
-	GetSubjectDataAtWorldTime(SubjectName: string,WorldTime: number,bSuccess?: boolean,SubjectFrameHandle?: SubjectFrameHandle): {bSuccess: boolean, SubjectFrameHandle: SubjectFrameHandle};
-	GetSubjectDataAtSceneTime(SubjectName: string,SceneTime: Timecode,bSuccess?: boolean,SubjectFrameHandle?: SubjectFrameHandle): {bSuccess: boolean, SubjectFrameHandle: SubjectFrameHandle};
-	GetSubjectData(SubjectName: string,bSuccess?: boolean,SubjectFrameHandle?: SubjectFrameHandle): {bSuccess: boolean, SubjectFrameHandle: SubjectFrameHandle};
-	GetAvailableSubjectNames(SubjectNames?: string[]): {SubjectNames: string[]};
-	static C(Other: UObject | any): LiveLinkComponent;
-}
-
-declare class LiveLinkDrivenComponent extends ActorComponent { 
-	SubjectName: LiveLinkSubjectName;
-	ActorTransformBone: string;
-	bModifyActorTransform: boolean;
-	bSetRelativeLocation: boolean;
-	static Load(ResourceName: string): LiveLinkDrivenComponent;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkDrivenComponent;
-	static GetDefaultObject(): LiveLinkDrivenComponent;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkDrivenComponent;
-	static C(Other: UObject | any): LiveLinkDrivenComponent;
-}
-
-declare class LiveLinkRetargetAsset extends UObject { 
-	static Load(ResourceName: string): LiveLinkRetargetAsset;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkRetargetAsset;
-	static GetDefaultObject(): LiveLinkRetargetAsset;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkRetargetAsset;
-	static C(Other: UObject | any): LiveLinkRetargetAsset;
-}
-
-declare class LiveLinkInstance extends AnimInstance { 
-	CurrentRetargetAsset: LiveLinkRetargetAsset;
-	static Load(ResourceName: string): LiveLinkInstance;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkInstance;
-	static GetDefaultObject(): LiveLinkInstance;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkInstance;
-	SetSubject(SubjectName: LiveLinkSubjectName): void;
-	SetRetargetAsset(RetargetAsset: UnrealEngineClass): void;
-	static C(Other: UObject | any): LiveLinkInstance;
-}
-
-declare class ProviderPollResult { 
-	Name: string;
-	MachineName: string;
-	MachineTimeOffset: any;
-	clone() : ProviderPollResult;
-	static C(Other: UObject | any): ProviderPollResult;
-}
-
-declare class LiveLinkMessageBusFinder extends UObject { 
-	static Load(ResourceName: string): LiveLinkMessageBusFinder;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkMessageBusFinder;
-	static GetDefaultObject(): LiveLinkMessageBusFinder;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkMessageBusFinder;
-	GetAvailableProviders(WorldContextObject: UObject,LatentInfo: LatentActionInfo,Duration: number,AvailableProviders?: ProviderPollResult[]): {AvailableProviders: ProviderPollResult[]};
-	static ConstructMessageBusFinder(): LiveLinkMessageBusFinder;
-	static ConnectToProvider(Provider?: ProviderPollResult,SourceHandle?: LiveLinkSourceHandle): {Provider: ProviderPollResult, SourceHandle: LiveLinkSourceHandle};
-	static C(Other: UObject | any): LiveLinkMessageBusFinder;
-}
-
-declare class LiveLinkMessageBusSourceFactory extends LiveLinkSourceFactory { 
-	static Load(ResourceName: string): LiveLinkMessageBusSourceFactory;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkMessageBusSourceFactory;
-	static GetDefaultObject(): LiveLinkMessageBusSourceFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkMessageBusSourceFactory;
-	static C(Other: UObject | any): LiveLinkMessageBusSourceFactory;
-}
-
-declare class LiveLinkMessageBusSourceSettings extends LiveLinkSourceSettings { 
-	static Load(ResourceName: string): LiveLinkMessageBusSourceSettings;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkMessageBusSourceSettings;
-	static GetDefaultObject(): LiveLinkMessageBusSourceSettings;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkMessageBusSourceSettings;
-	static C(Other: UObject | any): LiveLinkMessageBusSourceSettings;
-}
-
-declare class LiveLinkSourcePreset { 
-	Guid: Guid;
-	Settings: LiveLinkSourceSettings;
-	SourceType: string;
-	clone() : LiveLinkSourcePreset;
-	static C(Other: UObject | any): LiveLinkSourcePreset;
-}
-
-declare class LiveLinkSubjectPreset { 
-	Key: LiveLinkSubjectKey;
-	Role: UnrealEngineClass;
-	Settings: LiveLinkSubjectSettings;
-	VirtualSubject: LiveLinkVirtualSubject;
-	bEnabled: boolean;
-	clone() : LiveLinkSubjectPreset;
-	static C(Other: UObject | any): LiveLinkSubjectPreset;
-}
-
-declare class LiveLinkPreset extends UObject { 
-	Sources: LiveLinkSourcePreset[];
-	Subjects: LiveLinkSubjectPreset[];
-	static Load(ResourceName: string): LiveLinkPreset;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkPreset;
-	static GetDefaultObject(): LiveLinkPreset;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkPreset;
-	BuildFromClient(): void;
-	ApplyToClient(): boolean;
-	AddToClient(bRecreatePresets: boolean): boolean;
-	static C(Other: UObject | any): LiveLinkPreset;
-}
-
-declare class LiveLinkRemapAsset extends LiveLinkRetargetAsset { 
-	static Load(ResourceName: string): LiveLinkRemapAsset;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkRemapAsset;
-	static GetDefaultObject(): LiveLinkRemapAsset;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkRemapAsset;
-	RemapCurveElements(CurveItems?: any): {CurveItems: any};
-	GetRemappedCurveName(CurveName: string): string;
-	GetRemappedBoneName(BoneName: string): string;
-	static C(Other: UObject | any): LiveLinkRemapAsset;
-}
-
-declare class LiveLinkRoleProjectSetting { 
-	Role: UnrealEngineClass;
-	SettingClass: UnrealEngineClass;
-	FrameInterpolationProcessor: UnrealEngineClass;
-	FramePreProcessors: UnrealEngineClass[];
-	clone() : LiveLinkRoleProjectSetting;
-	static C(Other: UObject | any): LiveLinkRoleProjectSetting;
-}
-
-declare class LiveLinkSettings extends UObject { 
-	DefaultRoleSettings: LiveLinkRoleProjectSetting[];
-	FrameInterpolationProcessor: UnrealEngineClass;
-	DefaultLiveLinkPreset: LiveLinkPreset;
-	PresetSaveDir: DirectoryPath;
-	ClockOffsetCorrectionStep: number;
-	DefaultMessageBusSourceMode: ELiveLinkSourceMode;
-	MessageBusPingRequestFrequency: any;
-	MessageBusHeartbeatFrequency: any;
-	MessageBusHeartbeatTimeout: any;
-	MessageBusTimeBeforeRemovingInactiveSource: any;
-	TimeWithoutFrameToBeConsiderAsInvalid: any;
-	ValidColor: LinearColor;
-	InvalidColor: LinearColor;
-	TextSizeSource: number;
-	TextSizeSubject: number;
-	static Load(ResourceName: string): LiveLinkSettings;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkSettings;
-	static GetDefaultObject(): LiveLinkSettings;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkSettings;
-	static C(Other: UObject | any): LiveLinkSettings;
-}
-
-declare type ELiveLinkTimecodeProviderEvaluationType = 'Lerp' | 'Nearest' | 'Latest' | 'ELiveLinkTimecodeProviderEvaluationType_MAX';
-declare var ELiveLinkTimecodeProviderEvaluationType : { Lerp:'Lerp',Nearest:'Nearest',Latest:'Latest',ELiveLinkTimecodeProviderEvaluationType_MAX:'ELiveLinkTimecodeProviderEvaluationType_MAX', };
-declare class LiveLinkTimecodeProvider extends TimecodeProvider { 
-	SubjectKey: LiveLinkSubjectKey;
-	Evaluation: ELiveLinkTimecodeProviderEvaluationType;
-	bOverrideFrameRate: boolean;
-	OverrideFrameRate: FrameRate;
-	BufferSize: number;
-	static Load(ResourceName: string): LiveLinkTimecodeProvider;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkTimecodeProvider;
-	static GetDefaultObject(): LiveLinkTimecodeProvider;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkTimecodeProvider;
-	static C(Other: UObject | any): LiveLinkTimecodeProvider;
-}
-
-declare class LiveLinkTimeSynchronizationSource extends TimeSynchronizationSource { 
-	SubjectName: LiveLinkSubjectName;
-	static Load(ResourceName: string): LiveLinkTimeSynchronizationSource;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkTimeSynchronizationSource;
-	static GetDefaultObject(): LiveLinkTimeSynchronizationSource;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkTimeSynchronizationSource;
-	static C(Other: UObject | any): LiveLinkTimeSynchronizationSource;
-}
-
-declare class LiveLinkVirtualSubjectSourceSettings extends LiveLinkSourceSettings { 
-	SourceName: string;
-	static Load(ResourceName: string): LiveLinkVirtualSubjectSourceSettings;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkVirtualSubjectSourceSettings;
-	static GetDefaultObject(): LiveLinkVirtualSubjectSourceSettings;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkVirtualSubjectSourceSettings;
-	static C(Other: UObject | any): LiveLinkVirtualSubjectSourceSettings;
-}
-
-declare class LiveLinkOpenXRHandTrackingSourceFactory extends LiveLinkSourceFactory { 
-	static Load(ResourceName: string): LiveLinkOpenXRHandTrackingSourceFactory;
-	static Find(Outer: UObject, ResourceName: string): LiveLinkOpenXRHandTrackingSourceFactory;
-	static GetDefaultObject(): LiveLinkOpenXRHandTrackingSourceFactory;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): LiveLinkOpenXRHandTrackingSourceFactory;
-	static C(Other: UObject | any): LiveLinkOpenXRHandTrackingSourceFactory;
-}
-
-declare type EQuatSwizzleAxisB = 'X' | 'Y' | 'Z' | 'W' | 'MinusX' | 'MinusY' | 'MinusZ' | 'MinusW' | 'EQuatSwizzleAxisB_MAX';
-declare var EQuatSwizzleAxisB : { X:'X',Y:'Y',Z:'Z',W:'W',MinusX:'MinusX',MinusY:'MinusY',MinusZ:'MinusZ',MinusW:'MinusW',EQuatSwizzleAxisB_MAX:'EQuatSwizzleAxisB_MAX', };
-declare class OpenXRHandTrackingLiveLinkRemapAsset extends LiveLinkRetargetAsset { 
-	bHasMetacarpals: boolean;
-	bRetargetRotationOnly: boolean;
-	SwizzleX: EQuatSwizzleAxisB;
-	SwizzleY: EQuatSwizzleAxisB;
-	SwizzleZ: EQuatSwizzleAxisB;
-	SwizzleW: EQuatSwizzleAxisB;
-	HandTrackingBoneNameMap: any;
-	static Load(ResourceName: string): OpenXRHandTrackingLiveLinkRemapAsset;
-	static Find(Outer: UObject, ResourceName: string): OpenXRHandTrackingLiveLinkRemapAsset;
-	static GetDefaultObject(): OpenXRHandTrackingLiveLinkRemapAsset;
-	static CreateDefaultSubobject(Name: string, Transient?: boolean, Required?: boolean, Abstract?: boolean): OpenXRHandTrackingLiveLinkRemapAsset;
-	static C(Other: UObject | any): OpenXRHandTrackingLiveLinkRemapAsset;
 }
 
 declare type EFixedFoveatedRenderingLevel = 'FFR_Off' | 'FFR_Low' | 'FFR_Medium' | 'FFR_High' | 'FFR_HighTop' | 'FFR_MAX';
